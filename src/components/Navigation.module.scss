@@ -1,0 +1,66 @@
+@import '../appearance/styles/variables.scss';
+
+.nav {
+  background-color: $black;
+  color: $white;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navTitle {
+  padding: 0 1rem;
+
+  @media #{$medium} {
+    padding: 0 3rem;
+  }
+}
+
+.menu {
+  align-items: center;
+  display: inline-flex;
+  justify-content: flex-end;
+  
+  @media #{$medium} {
+    display: none;
+  }
+}
+
+.navMenu {
+  align-self: center;
+}
+
+.navMenu {
+  display: flex;
+  list-style: none;
+  padding: 0 1rem;
+
+  @media #{$medium} {
+    padding: 0 3rem;
+  }
+}
+
+.mobileMenu {
+  display: flex;
+  list-style: none;
+  padding: 0 1rem;
+}
+
+.navItem {
+  display: none;
+  
+  @media #{$medium} {
+    align-items: center;
+    border-right: 1px solid $white;
+    display: inline-flex;
+    padding: 0 0.5rem;
+  
+    &:last-child {
+      border: none;
+    }
+  }
+}
+
+.nav a {
+  color: currentColor;
+}

@@ -1,0 +1,71 @@
+@import url('https://use.fontawesome.com/releases/v5.2.0/css/all.css');
+@import '../appearance/styles/variables.scss';
+
+html,
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.show-small {
+  @media #{$medium} {
+    display: none;
+  }
+}
+
+.show-medium {
+  display: none;
+
+  @media #{$medium} {
+    display: block;
+  }
+}
+
+.show-medium-inline-block {
+  display: none;
+
+  @media #{$medium} {
+    display: inline-block;
+  }
+}
+
+.show-large {
+  display: none;
+
+  @media #{$large} {
+    display: block;
+  }
+}
+
+.show-large-inline-block {
+  display: none;
+
+  @media #{$large} {
+    display: inline-block;
+  }
+}
+
+.show-x-large {
+  display: none;
+
+  @media #{$x-large} {
+    display: block;
+  }
+}
+
+.show-x-large-inline-block {
+  display: none;
+
+  @media #{$x-large} {
+    display: inline-block;
+  }
+}

@@ -1,14 +1,54 @@
-import React from "react"
+import { graphql } from 'gatsby'
+import React from 'react'
+import Helmet from 'react-helmet'
 import './Index.module.scss'
-import { Navigation } from "../components/Navigation";
-  
-export default () => (
-  <div>
-    <Navigation title="Restaurant Title" />
-    <h1>Hello world!</h1>
-    <p>CSS preprocessors are pretty great.</p>
-  </div>
-);
+import styles from './Home.module.scss'
+import { Hero, Intro, Layout, LocationHours } from '../components';
+import { IndexData } from '../types/queries';
+
+interface IndexProps {
+  data: IndexData
+}
+
+export default class Index extends React.Component<IndexProps> {
+  public render() {
+    const { data } = this.props;
+    const siteTitle = data.site.siteMetadata.title;
+    const heroImage = data.heroImage.childImageSharp.fluid;
+
+    return (
+      <Layout data={data}>
+        <Helmet title={siteTitle} />
+        <Hero
+          image={heroImage}
+          phone={5557416842}
+          title={siteTitle}
+        />
+        <div className={styles.homeContent}>
+          <Intro />
+          <LocationHours />
+        </div>
+      </Layout>
+    );
+  }
+}
+
+export const IndexQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    heroImage: file(relativePath: { eq: "pizza.jpg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1000) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`
 
 // import React from 'react'
 // import { graphql } from 'gatsby'
@@ -20,7 +60,7 @@ export default () => (
 
 // class RootIndex extends React.Component {
 //   render() {
-//     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
+    // const siteTitle = get(this, 'props.data.site.siteMetadata.title')
 //     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
 //     const [author] = get(this, 'props.data.allContentfulPerson.edges')
 

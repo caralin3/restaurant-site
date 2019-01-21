@@ -1,0 +1,59 @@
+@import '../appearance/styles/variables.scss';
+
+.footer {
+  align-items: center;
+  background-color: $black;
+  color: $white;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  padding: 1rem 0;
+  text-align: center;
+  width: 100%;
+
+  @media #{$large} {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.footerContact {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 1rem;
+}
+
+.footerSocial {
+  align-items: center;
+  display: flex;
+  padding: 0.5rem 2rem;
+
+  @media #{$large} {
+    padding: 0 2rem;
+  }
+
+  i {
+    font-size: 14pt;
+    padding: 0 0.5rem;
+  }
+}
+
+.footerAddress {
+  font-size: 12pt;
+  line-height: 2;
+  margin: 0;
+
+  @media #{$large} {
+    line-height: 1.5;
+  }
+}
+
+.footerCopyright {
+  padding-top: 0.5rem;
+
+  @media #{$large} {
+    padding: 0 2rem;
+  }
+}

@@ -20,6 +20,11 @@ if (!spaceId || !accessToken) {
 }
 
 module.exports = {
+  siteMetadata: {
+    title: `Restaurant Name`,
+    siteUrl: `https://www.restaurant.com`,
+    description: `Website for Restaurant`,
+  },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
     `gatsby-plugin-sass`,
@@ -28,6 +33,13 @@ module.exports = {
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/appearance/images`,
+        name: 'images',
+      },
+    },
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,

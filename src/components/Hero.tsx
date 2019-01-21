@@ -1,22 +1,24 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import styles from './hero.module.scss'
+import styles from './Hero.module.scss'
+import { formatPhone } from '../utils/formatter';
 
 interface HeroProps {
   image: any;
   title: string;
-  subtitle: string;
-  phone: string;
+  phone: number;
 }
 
 export const Hero: React.SFC<HeroProps> = (props) => (
   <div className={styles.hero}>
-    <Img className={styles.heroImage} alt={props.title} fluid={props.image.fluid} />
+    {/* <Img className={styles.heroImage} alt={props.title} fluid={props.image.fluid} /> */}
+    <img className={styles.heroImage} src={require('../appearance/images/pizza.jpg')} />
     <div className={styles.heroDetails}>
       <p className={styles.heroTitle}>{props.title}</p>
-      <p>{props.subtitle}</p>
-      <button className={styles.button}>View Menu</button>
-      <p>CALL {props.phone} TO ORDER </p>
+      <button>View Menu</button>
+      <p className={styles.heroPhone}>
+        Call <strong>{formatPhone(props.phone)}</strong> to Order
+      </p>
     </div>
   </div>
 )

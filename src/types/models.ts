@@ -30,3 +30,7 @@ export interface Food {
   meal: 'lunch' | 'dinner' | 'both';
   shortDescription: string;
 }
+
+export interface ContentfulFood {
+  node: Food;
+}

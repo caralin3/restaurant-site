@@ -25,7 +25,7 @@ export interface HoursData {
 }
 
 export interface FoodData {
-  allContentfulHours: {
+  allContentfulFood: {
     edges: {
       node: Food
     }[]

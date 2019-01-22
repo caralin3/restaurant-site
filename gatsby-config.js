@@ -8,6 +8,7 @@ try {
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
+  environment: process.env.CONTENTFUL_ENV_ID || contentfulConfig.envId,
   accessToken: process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
 }
 

@@ -1,41 +1,40 @@
 import React from 'react'
+import { Address, ContentfulHours } from '../types';
 import styles from './LocationHours.module.scss'
 
-interface LocationHoursProps {}
-
-interface LocationHoursState {
-
+interface LocationHoursProps {
+  hours: ContentfulHours[];
+  location: Address;
 }
 
-export class LocationHours extends React.Component<LocationHoursProps, LocationHoursState> {
+
+export class LocationHours extends React.Component<LocationHoursProps> {
 
   public render() {
-    const street = '12 Address St';
-    const city = 'City Town, ST 14576';
-    const address = street + ' ' + city;
+    const { hours, location } = this.props;
+    const { city, state, street, zipCode } = location;
+    const address = `${street} ${city}, ${state}`;
     const mapsLink = `http://maps.google.com/?q=${address}`;
 
     return (
       <div className={styles.locationHours}>
         <div className={styles.container}>
           <p className={styles.title}>Hours</p>
-          <span className={styles.hour}>
-            <p className={styles.label}>Monday-Thursday</p>
-            <p className={styles.details}>11:30am - 7:30pm</p>
-          </span>
-          <span className={styles.hour}>
-            <p className={styles.label}>Friday-Saturday</p>
-            <p className={styles.details}>11am - 9pm</p>
-          </span>
-          <span className={styles.hour}>
-            <p className={styles.label}>Sunday</p>
-            <p className={styles.details}>12pm - 7:30pm</p>
-          </span>
+          {hours.map((edge, i) => (
+            <span className={styles.hour} key={i}>
+              <p className={styles.label}>
+                {edge.node.daysOfTheWeek}
+              </p>
+              <p className={styles.details}>
+                {`${edge.node.open} - ${edge.node.close}`}
+              </p>
+            </span>
+          ))}
         </div>
         <div className={styles.container}>
           <p className={styles.title}>Location</p>
           <p className={styles.details}>{street}</p>
-          <p className={styles.details}>{city}</p>
+          <p className={styles.details}>{`${city}, ${state} ${zipCode}`}</p>
           <a className={styles.locationLink} href={mapsLink} target="_blank">
             Get Directions
           </a>

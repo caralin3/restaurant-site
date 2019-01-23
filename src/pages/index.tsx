@@ -7,6 +7,8 @@ import { Address, ContentfulHours, IndexData, Location } from '../types';
 import { getAddress, sortDays } from '../utils';
 import './Index.module.scss'
 import styles from './Home.module.scss'
+import favicon from '../appearance/images/pizza.jpg';
+
 
 interface IndexProps {
   data: IndexData
@@ -22,7 +24,10 @@ export default class Index extends React.Component<IndexProps> {
 
     return (
       <Layout address={address} siteTitle={siteTitle}>
-        <Helmet title={siteTitle} />
+        <Helmet
+          title={siteTitle}
+          link={[{ rel: 'shortcut icon', type: 'image/png', href: `${favicon}` }]}
+        />
         <Hero
           image={location.heroImage}
           phone={address.phone}

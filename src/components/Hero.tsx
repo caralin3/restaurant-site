@@ -14,7 +14,9 @@ export const Hero: React.SFC<HeroProps> = (props) => (
     <Img className={styles.heroImage} alt={props.title} fluid={props.image.fluid} />
     <div className={styles.heroDetails}>
       <p className={styles.heroTitle}>{props.title}</p>
-      <button>View Menu</button>
+      <button>
+        <a href="/menu">View Menu</a>
+      </button>
       <p className={styles.heroPhone}>
         Call <strong>{formatPhone(props.phone)}</strong> to Order
       </p>

@@ -8,6 +8,8 @@ const contentfulConfig = {
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 }
 
+console.log(contentfulConfig);
+
 const { spaceId, accessToken } = contentfulConfig
 
 if (!spaceId || !accessToken) {
@@ -18,8 +20,8 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: `Restaurant Name`,
-    siteUrl: `https://www.restaurant.com`,
+    title: `Joe's Pizzeria & Restaurant`,
+    siteUrl: `https://www.joespizza.com`,
     description: `Website for Restaurant`,
   },
   pathPrefix: '/gatsby-contentful-starter',

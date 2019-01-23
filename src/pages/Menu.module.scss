@@ -1,0 +1,29 @@
+@import '../appearance/styles/variables.scss';
+
+.menu {
+  background: goldenrod;
+  color: $black;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 1rem;
+
+  @media #{$medium} {
+    display: grid;
+    grid-template:
+    "appetizers pizza specialtypizza"
+    "salads toppings sandwiches"
+    "soups desserts drinks"
+    ;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.section {
+  text-align: center;
+
+  &_header {
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+}

@@ -2,24 +2,10 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-let contentfulConfig;
-
-try {
-  // Load the Contentful config from the .contentful.json
-  contentfulConfig = require('./.contentful')
-} catch (_) {}
-
-const envConfig = {
+const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   environment: process.env.CONTENTFUL_ENV_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-}
-
-// Overwrite the Contentful config with environment variables if they exist
-contentfulConfig = {
-  spaceId: envConfig.spaceId || contentfulConfig.spaceId,
-  environment: envConfig.envId || contentfulConfig.envId,
-  accessToken: envConfig.accessToken || contentfulConfig.accessToken,
 }
 
 const { spaceId, accessToken } = contentfulConfig

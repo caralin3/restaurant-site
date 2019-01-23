@@ -1,47 +1,56 @@
-.hero {
-  position: relative;
-  background: #000;
-  color: #fff;
-  text-align: center;
-}
+@import '../appearance/styles/variables.scss';
 
-.heroImage {
-  /*
-    Ensure golden ratio for the hero size while limiting it to some extend to
-    the viewport width
-  */
-  height: 61.8vh;
-  max-height: 400px;
+.hero {
+  align-items: center;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  
+  @media #{$medium} {
+    height: 100vh;
+  }
 }
 
 .heroDetails {
+  align-items: center;
+  color: $white;
   position: absolute;
-  background: rgba(0, 0, 0, 0.7);
-  left: 50%;
+  background: rgba(0, 0, 0, 0.5);
   bottom: 0;
-  transform: translate(-50%, 0);
-  font-size: 14px;
-  padding: 0 0.5em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
 
-@media(min-width: 600px) {
-  .heroDetails {
-    font-size: 16px;
-  }
-}
-
-@media(min-width: 1000px) {
-  .heroDetails {
-    font-size: 20px;
-  }
-}
-
-.heroHeadline {
-  margin: 0;
+.heroImage {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .heroTitle {
-  margin: 0;
-  font-size: 1.125em;
+  font-size: 24pt;
   font-weight: bold;
+  margin: 0;
+  padding: 1rem 0;
+
+  @media #{$medium} {
+    font-size: 32pt;
+  }
+}
+
+.heroPhone {
+  font-size: 12pt;
+  margin: 0;
+  padding-top: 1rem;
+
+  @media #{$medium} {
+    font-size: 16pt;
+    padding-top: 2rem;
+  }
 }

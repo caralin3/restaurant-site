@@ -1,0 +1,45 @@
+@import '../appearance/styles/variables.scss';
+
+.locationHours {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.hour {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.label {
+  margin: 0;
+  padding-right: 1rem;
+}
+
+.details {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.locationLink {
+  font-weight: bold;
+  padding-top: 1rem;
+
+  &:focus,
+  &:hover {
+    color: $white;
+  }
+}

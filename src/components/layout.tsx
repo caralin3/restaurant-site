@@ -1,26 +1,22 @@
-// import React from 'react'
-// import { Link } from 'gatsby'
-// import base from './base.scss'
-// import Container from './container'
-// import Navigation from './navigation'
+import React from 'react'
+import { Address } from '../types';
+import styles from './Layout.module.scss'
+import { Navigation, Footer } from '.';
 
-// class Template extends React.Component {
-//   render() {
-//     const { location, children } = this.props
-//     let header
+interface LayoutProps {
+  address: Address;
+  siteTitle: string;
+}
 
-//     let rootPath = `/`
-//     if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
-//       rootPath = __PATH_PREFIX__ + `/`
-//     }
-
-//     return (
-//       <Container>
-//         <Navigation />
-//         {children}
-//       </Container>
-//     )
-//   }
-// }
-
-// export default Template
+export const Layout: React.SFC<LayoutProps> = (props) => (
+  <div className={styles.layout}>
+    <Navigation title={props.siteTitle} />
+    <div className={styles.layout}>
+      {props.children}
+    </div>
+    <Footer
+      address={props.address}
+      title={props.siteTitle}
+    />
+  </div>
+)

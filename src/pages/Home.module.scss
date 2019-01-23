@@ -1,0 +1,14 @@
+@import '../appearance/styles/variables.scss';
+
+.homeContent {
+  background: goldenrod;
+  color: $black;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 1rem;
+
+  @media #{$medium} {
+    display: grid;
+    grid-template-columns: auto auto;
+  }
+}

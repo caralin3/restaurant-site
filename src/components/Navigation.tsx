@@ -18,7 +18,7 @@ interface NavRoute {
 const routes: NavRoute[] = [
   {path: '/about', label: 'About'},
   {path: '/menu', label: 'Menu'},
-  {path: '/hours', label: 'Hours & Location'},
+  {path: '/catering', label: 'Catering'},
   // {path: '/order', label: 'Order Online'},
   {path: '/contact', label: 'Contact'},
 ]
@@ -32,20 +32,20 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
     const { show } = this.state;
     const { title } = this.props;
 
-    const navMenu = () => (
+    const navMenu = (
       <ul className={styles.navMenu}>
-        {routes.map(route => (
-          <li className={styles.navItem}>
+        {routes.map((route, i) => (
+          <li className={styles.navItem} key={i}>
             <Link to={route.path}>{route.label}</Link>
           </li>
         ))}
       </ul>
     )
 
-    const mobileMenu = () => (
+    const mobileMenu = (
       <ul className={styles.mobileMenu}>
-        {routes.map(route => (
-          <li className={styles.mobileItem}>
+        {routes.map((route, i) => (
+          <li className={styles.mobileItem} key={i}>
             <Link to={route.path}>{route.label}</Link>
           </li>
         ))}
@@ -54,33 +54,16 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
 
     return (
       <nav className={styles.nav} role="navigation">
-        <p className={styles.navTitle}>
-          <Link to="/">{title}</Link>
-        </p>
-        <span className={styles.menu} onClick={() => this.setState({ show: !show })}>
-          {!show && <i className={"fas fa-bars"} />}
-        </span>
-        <ul className={show ? styles.navMenu : styles.mobileMenu}>
-          
-          <li className={styles.navItem}>
-            <Link to="/about">About</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link to="/menu">Menu</Link>
-          </li>
-          <li className={styles.navItem}>
-            <Link to="/about">Hours &amp; Location</Link>
-          </li>
-          {/* <li className={styles.navItem}>
-            <Link to="/order/">Order Online</Link>
-          </li> */}
-          <li className={styles.navItem}>
-            <Link to="/contact">Contact</Link>
-          </li>
-          {/* <li className={styles.navItem}>
-            <Link to="/blog/">Blog</Link>
-          </li> */}
-        </ul>
+        <div className={styles.bar}>
+          <p className={styles.navTitle}>
+            <Link to="/">{title}</Link>
+          </p>
+          {navMenu}
+          <span className={styles.menu} onClick={() => this.setState({ show: !show })}>
+            <i className={"fas fa-bars"} />
+          </span>
+        </div>
+        {show && mobileMenu}
       </nav>
     )
   }

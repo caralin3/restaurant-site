@@ -2,45 +2,37 @@ import { graphql } from 'gatsby'
 import { get } from 'lodash';
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Hero, Intro, Layout, LocationHours } from '../components';
-import { Address, ContentfulHours, IndexData, Location } from '../types';
-import { getAddress, sortDays } from '../utils';
-import './Index.module.scss'
-import styles from './Home.module.scss'
+import { Layout } from '../components';
+import { Address, ContentfulFood, MenuData, Location } from '../types';
+import { getAddress } from '../utils';
+// import styles from './Menu.module.scss'
 
-interface IndexProps {
-  data: IndexData
+interface MenuProps {
+  data: MenuData
 }
 
-export default class Index extends React.Component<IndexProps> {
+export default class Menu extends React.Component<MenuProps> {
 
   public render() {
     const siteTitle = this.props.data.site.siteMetadata.title;
     const location: Location = get(this, 'props.data.allContentfulLocations.edges')[0].node;
-    const hours: ContentfulHours[] = sortDays(get(this, 'props.data.allContentfulHours.edges'));
+    const food: ContentfulFood[] = get(this, 'props.data.allContentfulFood.edges');
     const address: Address = getAddress(location);
 
     return (
       <Layout address={address} siteTitle={siteTitle}>
-        <Helmet title={siteTitle} />
-        <Hero
-          image={location.heroImage}
-          phone={address.phone}
-          title={siteTitle}
-        />
-        <div className={styles.homeContent}>
-          <Intro />
-          <LocationHours
-            hours={hours}
-            location={address}
-          />
-        </div>
+        <Helmet title={`Menu | ${siteTitle}`} />
+        {food.map((edge, i) => (
+          <div key={i}>
+            {edge.node.name}
+          </div>
+        ))}
       </Layout>
     );
   }
 }
 
-export const IndexQuery = graphql`
+export const MenuQuery = graphql`
   query {
     site {
       siteMetadata {
@@ -63,12 +55,14 @@ export const IndexQuery = graphql`
         }
       }
     }
-    allContentfulHours {
+    allContentfulFood {
       edges {
         node {
-          daysOfTheWeek
-          open
-          close
+          name
+          meal
+          price
+          shortDescription
+          type
         }
       }
     }

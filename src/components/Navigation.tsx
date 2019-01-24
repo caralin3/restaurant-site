@@ -1,6 +1,6 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import styles from './Navigation.module.scss'
+import React from 'react';
+import { Link } from 'gatsby';
+import styles from './Navigation.module.scss';
 
 interface NavigationProps {
   title: string;

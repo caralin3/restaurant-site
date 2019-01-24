@@ -1,9 +1,9 @@
-import React from 'react'
-import { Helmet } from 'react-helmet';
+import React from 'react';
+import Helmet from 'react-helmet';
 // import favicon from '../../public/favicon.ico';
 import favicon from '../appearance/images/pizza.jpg';
 import { Address } from '../types';
-import styles from './Layout.module.scss'
+import styles from './Layout.module.scss';
 import { Navigation, Footer } from '.';
 
 interface LayoutProps {

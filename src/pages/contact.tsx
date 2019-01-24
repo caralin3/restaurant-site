@@ -1,11 +1,10 @@
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 import { get } from 'lodash';
-import React from 'react'
+import React from 'react';
 import { Layout } from '../components';
 import { Address, IndexData, Location } from '../types';
 import { getAddress } from '../utils';
-import styles from './Contact.module.scss'
-
+import styles from '../appearance/styles/Contact.module.scss';
 
 interface ContactProps {
   data: IndexData

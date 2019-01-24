@@ -1,7 +1,7 @@
-import React from 'react'
-import Img from 'gatsby-image'
-import styles from './Hero.module.scss'
+import React from 'react';
+import Img from 'gatsby-image';
 import { formatPhone } from '../utils/formatter';
+import styles from './Hero.module.scss';
 
 interface HeroProps {
   image: any;

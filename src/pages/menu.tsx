@@ -1,12 +1,10 @@
 import { graphql } from 'gatsby'
 import { get } from 'lodash';
-import React from 'react'
-import Helmet from 'react-helmet'
+import React from 'react';
 import { Layout } from '../components';
 import { Address, ContentfulFood, MenuData, Location } from '../types';
 import { getAddress } from '../utils';
-import styles from './Menu.module.scss'
-import favicon from '../appearance/images/pizza.jpg';
+import styles from '../appearance/styles/Menu.module.scss';
 
 interface MenuProps {
   data: MenuData

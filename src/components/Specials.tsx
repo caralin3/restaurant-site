@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './Specials.module.scss'
+import React from 'react';
+import styles from './Specials.module.scss';
 
 interface SpecialsProps {}
 

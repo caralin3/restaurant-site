@@ -1,14 +1,11 @@
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 import { get } from 'lodash';
-import React from 'react'
-import Helmet from 'react-helmet'
+import React from 'react';
 import { Hero, Intro, Layout, LocationHours } from '../components';
 import { Address, ContentfulHours, IndexData, Location } from '../types';
 import { getAddress, sortDays } from '../utils';
-import './Index.module.scss'
-import styles from './Home.module.scss'
-import favicon from '../appearance/images/pizza.jpg';
-
+import '../appearance/styles/Index.module.scss';
+import styles from '../appearance/styles/Home.module.scss';
 
 interface IndexProps {
   data: IndexData
@@ -24,10 +21,6 @@ export default class Index extends React.Component<IndexProps> {
 
     return (
       <Layout address={address} siteTitle={siteTitle}>
-        <Helmet
-          title={siteTitle}
-          link={[{ rel: 'shortcut icon', type: 'image/png', href: `${favicon}` }]}
-        />
         <Hero
           image={location.heroImage}
           phone={address.phone}

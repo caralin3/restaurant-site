@@ -2,11 +2,20 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+let masterConfig;
+
+try {
+  // Load the Contentful config from the .contentful.json
+  masterConfig = require('./.contentful')
+} catch (_) {}
+
 const contentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID,
-  environment: process.env.CONTENTFUL_ENV_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+  spaceId: process.env.CONTENTFUL_SPACE_ID || masterConfig.spaceId,
+  environment: process.env.CONTENTFUL_ENV_ID || masterConfig.envId,
+  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || masterConfig.accessToken,
 }
+
+console.log(contentfulConfig);
 
 const { spaceId, accessToken } = contentfulConfig
 
@@ -18,14 +27,14 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: `Restaurant Name`,
-    siteUrl: `https://www.restaurant.com`,
+    title: `Joe's Pizzeria & Restaurant`,
+    siteUrl: `https://www.joespizza.com`,
     description: `Website for Restaurant`,
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-typescript`,
+    'gatsby-plugin-sass',
+    'gatsby-plugin-typescript',
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',

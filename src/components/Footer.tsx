@@ -1,7 +1,7 @@
-import React from 'react'
-import styles from './Footer.module.scss'
-import { formatPhone } from '../utils/formatter';
+import React from 'react';
 import { Address } from '../types';
+import { formatPhone } from '../utils/formatter';
+import styles from './Footer.module.scss';
 
 interface FooterProps {
   address: Address

@@ -1,11 +1,12 @@
 @import url('https://use.fontawesome.com/releases/v5.2.0/css/all.css');
-@import '../appearance/styles/variables.scss';
+@import './variables.scss';
 
 html,
 body {
   font-family: sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 a {

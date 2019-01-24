@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 import { Address, ContentfulHours } from '../types';
-import styles from './LocationHours.module.scss'
+import styles from './LocationHours.module.scss';
 
 interface LocationHoursProps {
   hours: ContentfulHours[];

@@ -17,7 +17,7 @@ const contentfulConfig = {
 
 console.log(contentfulConfig);
 
-const { spaceId, accessToken } = contentfulConfig
+const { spaceId, accessToken } = contentfulConfig;
 
 if (!spaceId || !accessToken) {
   throw new Error(

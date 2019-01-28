@@ -9,18 +9,34 @@
   padding-bottom: 1rem;
 
   @media #{$medium} {
-    display: grid;
-    grid-template:
-    "appetizers pizza specialtypizza"
-    "salads toppings sandwiches"
-    "soups desserts drinks"
-    ;
-    grid-template-columns: repeat(3, 1fr);
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  
+  @supports (display: grid) {
+    @media #{$medium} {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template:
+      "appetizers pizza specialtypizza"
+      "salads toppings sandwiches"
+      "soups desserts drinks";
+    }
   }
 }
 
 .section {
   text-align: center;
+
+  @media #{$medium} {
+    height: 33%;
+    width: 33%;
+  }
+
+  @supports (display: grid) {
+    height: auto;
+    width: auto;
+  }
 
   &_header {
     font-weight: bold;

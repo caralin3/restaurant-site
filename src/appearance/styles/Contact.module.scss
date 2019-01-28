@@ -1,14 +1,73 @@
 @import './variables.scss';
 
 .contact {
+  align-items: center;
   background: goldenrod;
   color: $black;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  padding-bottom: 1rem;
+  padding: 3rem 0;
 
-  // @media #{$medium} {
-    
-  // }
+  @media #{$medium} {
+    padding: 5rem 0;
+  }
+}
+
+.form {
+  align-items: center;
+  background: $black;
+  border-radius: 5px;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 1rem 2rem;
+  width: 75%;
+
+  @media #{$medium} {
+    padding: 2rem;
+    width: 50%;
+  }
+}
+
+.title {
+  text-align: center;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
+.label {
+  padding-bottom: 0.5rem;
+}
+
+.input {
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem 0;
+  width: 15rem;
+  
+  @media #{$medium} {
+    width: 20rem;
+  }
+}
+
+.textarea {
+  border-radius: 5px;
+  height: 5rem;
+  margin-bottom: 0.5rem;
+  overflow: auto;
+  width: 15rem;
+  
+  @media #{$medium} {
+    width: 20rem;
+  }
+}
+
+.button {
+  width: 5rem;
 }

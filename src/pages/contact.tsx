@@ -14,6 +14,7 @@ interface ContactState {
   email: string;
   message: string;
   name: string;
+  submitted: boolean;
   valid: {
     email: boolean;
     message: boolean;
@@ -25,6 +26,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     email: '',
     message: '',
     name: '',
+    submitted: false,
     valid: {
       email: true,
       message: true,
@@ -41,6 +43,15 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     const { email, message, name } = this.state;
     if (!!email && this.isValidEmail() && !!message) {
       console.log(email, message, name);
+      this.setState({ submitted: true })
+      // fetch("/", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      //   body: JSON.stringify({ "form-name": "contact", ...this.state })
+      // })
+      //   .then(() => alert("Success!"))
+      //   .catch(error => alert(error));
+
     } else {
       this.setState({
         valid: {
@@ -53,7 +64,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
   }
 
   public render() {
-    const { email, message, name, valid } = this.state;
+    const { email, message, name, submitted, valid } = this.state;
     const siteTitle = this.props.data.site.siteMetadata.title;
     const location: Location = get(this, 'props.data.allContentfulLocations.edges')[0].node;
     const address: Address = getAddress(location);
@@ -61,7 +72,13 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     return (
       <Layout address={address} siteTitle={siteTitle} pageTitle="Contact">
         <div className={styles.contact}>
-          <form className={styles.form} onSubmit={(e) => this.handleSubmit(e)}>
+          {!submitted ? <form
+            name="contact"
+            data-netlify="true"
+            method="POST"
+            className={styles.form}
+            onSubmit={(e) => this.handleSubmit(e)}
+          >
             <h2 className={styles.title}>Contact Us</h2>
             <label className={styles.field}>
               <span className={styles.label}>
@@ -100,7 +117,11 @@ export default class Contact extends React.Component<ContactProps, ContactState>
             <button className={styles.button} type="submit">
               Send
             </button>
-          </form>
+          </form> : 
+          <div className={styles.form}>
+            <h2 className={styles.title}>Thank you for your submission. We will respond via email as soon as possible.</h2>
+          </div>
+          }
         </div>
       </Layout>
     );

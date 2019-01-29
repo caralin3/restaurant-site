@@ -15,8 +15,6 @@ const contentfulConfig = {
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || masterConfig.accessToken,
 }
 
-console.log(contentfulConfig);
-
 const { spaceId, accessToken } = contentfulConfig;
 
 if (!spaceId || !accessToken) {

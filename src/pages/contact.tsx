@@ -72,7 +72,9 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     return (
       <Layout address={address} siteTitle={siteTitle} pageTitle="Contact">
         <div className={styles.contact}>
-          {!submitted ? <form
+          {!submitted ?
+          <form
+            action='/no-cache=1'
             name="contact"
             data-netlify="true"
             method="POST"
@@ -86,10 +88,11 @@ export default class Contact extends React.Component<ContactProps, ContactState>
               </span>
               <input
                 className={styles.input}
+                name="name"
                 onChange={(e) => this.setState({ name: e.target.value })}
                 type="text"
                 value={name}
-                />
+              />
             </label>
             <label className={styles.field}>
               <span className={styles.label}>
@@ -97,6 +100,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
               </span>
               <input
                 className={styles.input}
+                name="email"
                 onChange={(e) => this.setState({ email: e.target.value, valid: {...valid, email: true} })}
                 type="email"
                 value={email}
@@ -109,6 +113,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
               </span>
               <textarea
                 className={styles.textarea}
+                name="message"
                 onChange={(e) => this.setState({ message: e.target.value, valid: {...valid, message: true}  })}
                 value={message}
               />

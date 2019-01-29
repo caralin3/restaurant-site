@@ -61,7 +61,13 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     return (
       <Layout address={address} siteTitle={siteTitle} pageTitle="Contact">
         <div className={styles.contact}>
-          <form className={styles.form} onSubmit={(e) => this.handleSubmit(e)}>
+          <form
+            name="contact"
+            data-netlify="true"
+            method="POST"
+            className={styles.form}
+            onSubmit={(e) => this.handleSubmit(e)}
+          >
             <h2 className={styles.title}>Contact Us</h2>
             <label className={styles.field}>
               <span className={styles.label}>

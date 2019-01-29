@@ -44,13 +44,13 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     if (!!email && this.isValidEmail() && !!message) {
       console.log(email, message, name);
       this.setState({ submitted: true })
-      // fetch("/", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      //   body: JSON.stringify({ "form-name": "contact", ...this.state })
-      // })
-      //   .then(() => alert("Success!"))
-      //   .catch(error => alert(error));
+      fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: JSON.stringify({ "form-name": "contact", ...this.state })
+      })
+        .then(() => alert("Success!"))
+        .catch(error => alert(error));
 
     } else {
       this.setState({
@@ -77,11 +77,19 @@ export default class Contact extends React.Component<ContactProps, ContactState>
             action='/no-cache=1'
             name="contact"
             data-netlify="true"
+            data-netlify-honeypot="bot"
             method="POST"
             className={styles.form}
             onSubmit={(e) => this.handleSubmit(e)}
           >
             <h2 className={styles.title}>Contact Us</h2>
+            <input type="hidden" name="form-name" value="contact" />
+            <p hidden>
+              <label>
+                Don't fill this out: {' '}
+                <input name="bot" />
+              </label>
+            </p>
             <label className={styles.field}>
               <span className={styles.label}>
                 Name <small className={styles.sublabel}>(optional)</small>

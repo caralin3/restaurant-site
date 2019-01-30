@@ -44,7 +44,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     if (!!email && this.isValidEmail() && !!message) {
       console.log(email, message, name);
       this.setState({ submitted: true })
-      fetch("/", {
+      fetch("https://restaurant-site.netlify.com/contact/?no-cache=1", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: JSON.stringify({ "form-name": "contact", ...this.state })
@@ -74,7 +74,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
         <div className={styles.contact}>
           {!submitted ?
           <form
-            action='/no-cache=1'
+            action="/no-cache=1"
             name="contact"
             data-netlify="true"
             data-netlify-honeypot="bot"

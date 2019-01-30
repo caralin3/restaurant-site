@@ -54,7 +54,7 @@ export const LocationHours: React.SFC<LocationHoursProps> = (props) => (
   />
 );
 
-export const LocationHoursQuery = graphql`
+const LocationHoursQuery = graphql`
   query {
     allContentfulLocations {
       edges {

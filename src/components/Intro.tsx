@@ -1,22 +1,44 @@
+import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
+import { ProfileData } from '../types';
 import styles from './Intro.module.scss';
 
 interface IntroProps {}
 
-export const Intro: React.SFC<IntroProps> = (props) => (
-  <div className={styles.intro}>
-    <p className={styles.introTitle}>Welcome</p>
-    <div className={styles.introText}>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-        sed do eiusmod tempor incididunt ut labore et dolore magna 
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-        ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        Duis aute irure dolor in reprehenderit in voluptate velit
-        esse cillum dolore eu fugiat nulla pariatur. Excepteur
-        sint occaecat cupidatat non proident, sunt in culpa qui 
-        officia deserunt mollit anim id est laborum.
-      </p>
+interface IntroPropsWithData {
+  data: ProfileData;
+}
+
+export const IntroComponent: React.SFC<IntroPropsWithData> = ({data}) => {
+  const bio = data.allContentfulProfile.edges[0].node.longBio.longBio;
+
+  return (
+    <div className={styles.intro}>
+      <p className={styles.introTitle}>Welcome</p>
+      <div className={styles.introText}>
+        <p>{bio}</p>
+      </div>
     </div>
-  </div>
-)
+  );
+}
+
+export const Intro: React.SFC<IntroProps> = (props) => (
+  <StaticQuery
+    query={IntroQuery}
+    render={(data: ProfileData) => <IntroComponent data={data} {...props} />}
+  />
+);
+
+export const IntroQuery = graphql`
+  query {
+    allContentfulProfile {
+      edges {
+        node {
+          longBio {
+            longBio
+          }
+        }
+      }
+    }
+  }
+`

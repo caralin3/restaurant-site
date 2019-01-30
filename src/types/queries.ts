@@ -1,10 +1,18 @@
-import { Food, Hours, Location } from './models';
+import { Food, Hours, Location, Profile } from './models';
 
 export interface SiteData {
   site: {
     siteMetadata: {
       title: string;
     }
+  }
+}
+
+export interface ProfileData {
+  allContentfulProfile: {
+    edges: {
+      node: Profile
+    }[]
   }
 }
 
@@ -32,12 +40,15 @@ export interface FoodData {
   }
 }
 
-export interface IndexData extends
-  HoursData,
+export interface HeroData extends
   LocationData,
   SiteData {}
 
-export interface MenuData extends
-  FoodData,
+export interface FooterData extends
   LocationData,
+  ProfileData,
   SiteData {}
+
+export interface LocationHoursData extends
+  HoursData,
+  LocationData {}

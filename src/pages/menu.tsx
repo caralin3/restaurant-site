@@ -1,21 +1,17 @@
-import { graphql } from 'gatsby'
+import { graphql } from 'gatsby';
 import { get } from 'lodash';
 import React from 'react';
 import { Layout } from '../components';
-import { Address, ContentfulFood, MenuData, Location } from '../types';
-import { getAddress } from '../utils';
+import { ContentfulFood, FoodData } from '../types';
 import styles from '../appearance/styles/Menu.module.scss';
 
 interface MenuProps {
-  data: MenuData
+  data: FoodData
 }
 
 export default class Menu extends React.Component<MenuProps> {
   public render() {
-    const siteTitle = this.props.data.site.siteMetadata.title;
-    const location: Location = get(this, 'props.data.allContentfulLocations.edges')[0].node;
     const food: ContentfulFood[] = get(this, 'props.data.allContentfulFood.edges');
-    const address: Address = getAddress(location);
     const sections: string[] = [
       'appetizers',
       'salads',
@@ -41,7 +37,7 @@ export default class Menu extends React.Component<MenuProps> {
     );
 
     return (
-      <Layout address={address} siteTitle={siteTitle} pageTitle="Menu">
+      <Layout pageTitle="Menu">
         <div className={styles.menu}>
           {sections.map((sec => (
             <div className={styles.section} key={sec} style={{gridArea: sec.replace(/\s/g, '')}}>
@@ -57,27 +53,6 @@ export default class Menu extends React.Component<MenuProps> {
 
 export const MenuQuery = graphql`
   query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allContentfulLocations {
-      edges {
-        node {
-          street
-          city
-          state
-          zipCode
-          phone
-          heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-               ...GatsbyContentfulFluid_tracedSVG
-              }
-          }
-        }
-      }
-    }
     allContentfulFood {
       edges {
         node {

@@ -1,33 +1,96 @@
+import { graphql, StaticQuery } from 'gatsby';
 import React from 'react';
-import { Address } from '../types';
+import { FooterData, Social } from '../types';
 import { formatPhone } from '../utils/formatter';
 import styles from './Footer.module.scss';
 
-interface FooterProps {
-  address: Address
-  title: string;
+interface FooterProps {}
+
+interface FooterPropsWithData {
+  data: FooterData;
+}
+
+export const FooterComponent: React.SFC<FooterPropsWithData> = ({data}) => {
+  const title = data.site.siteMetadata.title;
+  const location = data.allContentfulLocations.edges[0].node;
+  const profile = data.allContentfulProfile.edges[0].node;
+  const year = new Date().getFullYear();
+  const socials: Social[] = [
+    {
+      class: 'fa-facebook-square',
+      url: profile.facebook
+    },
+    {
+      class: 'fa-twitter-square',
+      url: profile.twitter
+    },
+    {
+      class: 'fa-instagram',
+      url: profile.instagram
+    }
+  ]
+
+  return (
+    <footer className={styles.footer}>
+      <small className={styles.footerCopyright}>
+        &copy; {year} {title}
+      </small>
+      <span className={styles.footerContact}>
+        <p className={styles.footerAddress}>
+          {`${location.street}
+            ${location.city}, 
+            ${location.state}
+          `}
+        </p>
+        <p className={styles.footerAddress}>
+          {formatPhone(location.phone)}
+        </p>
+      </span>
+      <span className={styles.footerSocial}>
+        {socials.map(soc => (
+          !!soc.url &&
+          <a href={soc.url} target="_blank">
+            <i className={`fab ${soc.class}`} />
+          </a>
+        ))}
+      </span>
+    </footer>
+  );
 }
 
 export const Footer: React.SFC<FooterProps> = (props) => (
-  <footer className={styles.footer}>
-    <small className={styles.footerCopyright}>
-      &copy; {new Date().getFullYear()} {props.title}
-    </small>
-    <span className={styles.footerContact}>
-      <p className={styles.footerAddress}>
-        {`${props.address.street}
-          ${props.address.city}, 
-          ${props.address.state}
-        `}
-      </p>
-      <p className={styles.footerAddress}>
-        {formatPhone(props.address.phone)}
-      </p>
-    </span>
-    <span className={styles.footerSocial}>
-      <i className="fab fa-facebook-square" />
-      <i className="fab fa-twitter-square" />
-      <i className="fab fa-instagram" />
-    </span>
-  </footer>
-)
+  <StaticQuery
+    query={FooterQuery}
+    render={(data: FooterData) => <FooterComponent data={data} {...props} />}
+  />
+);
+
+export const FooterQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    allContentfulLocations {
+      edges {
+        node {
+          street
+          city
+          state
+          zipCode
+          phone
+        }
+      }
+    }
+    allContentfulProfile {
+      edges {
+        node {
+          facebook
+          twitter
+          instagram
+        }
+      }
+    }
+  }
+`

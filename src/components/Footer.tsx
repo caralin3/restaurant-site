@@ -47,9 +47,9 @@ export const FooterComponent: React.SFC<FooterPropsWithData> = ({data}) => {
         </p>
       </span>
       <span className={styles.footerSocial}>
-        {socials.map(soc => (
+        {socials.map((soc, i) => (
           !!soc.url &&
-          <a href={soc.url} target="_blank">
+          <a href={soc.url} target="_blank" key={i}>
             <i className={`fab ${soc.class}`} />
           </a>
         ))}

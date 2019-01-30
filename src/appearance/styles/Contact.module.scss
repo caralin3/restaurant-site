@@ -2,11 +2,9 @@
 
 .contact {
   align-items: center;
-  background: goldenrod;
   color: $black;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
   padding: 3rem 0;
 
   @media #{$medium} {

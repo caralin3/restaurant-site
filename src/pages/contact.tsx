@@ -6,6 +6,7 @@ interface ContactProps {}
 
 interface ContactState {
   email: string;
+  error: string;
   message: string;
   name: string;
   submitted: boolean;
@@ -18,6 +19,7 @@ interface ContactState {
 export default class Contact extends React.Component<ContactProps, ContactState> {
   public readonly state: ContactState = {
     email: '',
+    error: '',
     message: '',
     name: '',
     submitted: false,
@@ -42,15 +44,16 @@ export default class Contact extends React.Component<ContactProps, ContactState>
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const { email, message, name } = this.state;
     if (!!email && this.isValidEmail() && !!message) {
-      console.log(email, message, name);
-      this.setState({ submitted: true })
       fetch("https://restaurant-site.netlify.com/contact/?no-cache=1", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: this.encode({ "form-name": "contact", ...this.state })
       })
-        .then(() => alert("Success!"))
-        .catch(error => alert(error));
+        .then(() => this.setState({ submitted: true }))
+        .catch(error => {
+          console.error(error);
+          this.setState({ error: 'Submission failed. Please try again in a few minutes.' })
+        });
 
     } else {
       this.setState({
@@ -64,7 +67,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
   }
 
   public render() {
-    const { email, message, name, submitted, valid } = this.state;
+    const { email, error, message, name, submitted, valid } = this.state;
 
     return (
       <Layout pageTitle="Contact">
@@ -80,6 +83,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
             onSubmit={(e) => this.handleSubmit(e)}
           >
             <h2 className={styles.title}>Contact Us</h2>
+            {error && <p>{error}</p>}
             <input type="hidden" name="form-name" value="contact" />
             <p hidden>
               <label>
@@ -129,7 +133,8 @@ export default class Contact extends React.Component<ContactProps, ContactState>
             </button>
           </form> : 
           <div className={styles.form}>
-            <h2 className={styles.title}>Thank you for your submission. We will respond via email as soon as possible.</h2>
+            <h2 className={styles.title}>Thank you for your submission!</h2>
+            <p>We will respond via email as soon as possible.</p>
           </div>
           }
         </div>

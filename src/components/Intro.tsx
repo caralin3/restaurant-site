@@ -29,7 +29,7 @@ export const Intro: React.SFC<IntroProps> = (props) => (
   />
 );
 
-export const IntroQuery = graphql`
+const IntroQuery = graphql`
   query {
     allContentfulProfile {
       edges {

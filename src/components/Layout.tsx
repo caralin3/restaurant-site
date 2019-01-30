@@ -41,7 +41,7 @@ export const Layout: React.SFC<LayoutProps> = (props) => (
   />
 );
 
-export const LayoutQuery = graphql`
+const LayoutQuery = graphql`
   query {
     site {
       siteMetadata {

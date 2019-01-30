@@ -37,7 +37,7 @@ export const Hero: React.SFC<HeroProps> = (props) => (
   />
 );
 
-export const HeroQuery = graphql`
+const HeroQuery = graphql`
   query {
     site {
       siteMetadata {

@@ -65,7 +65,7 @@ export const Footer: React.SFC<FooterProps> = (props) => (
   />
 );
 
-export const FooterQuery = graphql`
+const FooterQuery = graphql`
   query {
     site {
       siteMetadata {

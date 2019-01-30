@@ -39,18 +39,24 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     return regExp.test(email);
   };
 
+  private encode = (data: any) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  }
+
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const { email, message, name } = this.state;
     if (!!email && this.isValidEmail() && !!message) {
       console.log(email, message, name);
       this.setState({ submitted: true })
-      // fetch("/", {
-      //   method: "POST",
-      //   headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      //   body: JSON.stringify({ "form-name": "contact", ...this.state })
-      // })
-      //   .then(() => alert("Success!"))
-      //   .catch(error => alert(error));
+      fetch("https://restaurant-site.netlify.com/contact/?no-cache=1", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: this.encode({ "form-name": "contact", ...this.state })
+      })
+        .then(() => alert("Success!"))
+        .catch(error => alert(error));
 
     } else {
       this.setState({
@@ -72,24 +78,35 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     return (
       <Layout address={address} siteTitle={siteTitle} pageTitle="Contact">
         <div className={styles.contact}>
-          {!submitted ? <form
+          {!submitted ?
+          <form
+            action="/no-cache=1"
             name="contact"
             data-netlify="true"
+            data-netlify-honeypot="bot"
             method="POST"
             className={styles.form}
             onSubmit={(e) => this.handleSubmit(e)}
           >
             <h2 className={styles.title}>Contact Us</h2>
+            <input type="hidden" name="form-name" value="contact" />
+            <p hidden>
+              <label>
+                Don't fill this out: {' '}
+                <input name="bot" />
+              </label>
+            </p>
             <label className={styles.field}>
               <span className={styles.label}>
                 Name <small className={styles.sublabel}>(optional)</small>
               </span>
               <input
                 className={styles.input}
+                name="name"
                 onChange={(e) => this.setState({ name: e.target.value })}
                 type="text"
                 value={name}
-                />
+              />
             </label>
             <label className={styles.field}>
               <span className={styles.label}>
@@ -97,6 +114,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
               </span>
               <input
                 className={styles.input}
+                name="email"
                 onChange={(e) => this.setState({ email: e.target.value, valid: {...valid, email: true} })}
                 type="email"
                 value={email}
@@ -109,6 +127,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
               </span>
               <textarea
                 className={styles.textarea}
+                name="message"
                 onChange={(e) => this.setState({ message: e.target.value, valid: {...valid, message: true}  })}
                 value={message}
               />

@@ -34,3 +34,19 @@ export interface Food {
 export interface ContentfulFood {
   node: Food;
 }
+
+export interface Social {
+  url: string;
+  class: string
+}
+
+export interface ContentfulLongBio {
+  longBio: string
+}
+
+export interface Profile {
+  facebook: string;
+  instagram: string;
+  longBio: ContentfulLongBio;
+  twitter: string;
+}

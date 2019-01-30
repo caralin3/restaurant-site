@@ -1,14 +1,8 @@
-import { graphql } from 'gatsby';
-import { get } from 'lodash';
 import React from 'react';
 import { Layout } from '../components';
-import { Address, IndexData, Location } from '../types';
-import { getAddress } from '../utils';
 import styles from '../appearance/styles/Contact.module.scss';
 
-interface ContactProps {
-  data: IndexData
-}
+interface ContactProps {}
 
 interface ContactState {
   email: string;
@@ -71,12 +65,9 @@ export default class Contact extends React.Component<ContactProps, ContactState>
 
   public render() {
     const { email, message, name, submitted, valid } = this.state;
-    const siteTitle = this.props.data.site.siteMetadata.title;
-    const location: Location = get(this, 'props.data.allContentfulLocations.edges')[0].node;
-    const address: Address = getAddress(location);
 
     return (
-      <Layout address={address} siteTitle={siteTitle} pageTitle="Contact">
+      <Layout pageTitle="Contact">
         <div className={styles.contact}>
           {!submitted ?
           <form
@@ -146,29 +137,3 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     );
   }
 }
-
-export const ContactQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    allContentfulLocations {
-      edges {
-        node {
-          street
-          city
-          state
-          zipCode
-          phone
-          heroImage {
-            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-               ...GatsbyContentfulFluid_tracedSVG
-              }
-          }
-        }
-      }
-    }
-  }
-`

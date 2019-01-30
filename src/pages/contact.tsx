@@ -39,6 +39,12 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     return regExp.test(email);
   };
 
+  private encode = (data: any) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  }
+
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const { email, message, name } = this.state;
     if (!!email && this.isValidEmail() && !!message) {
@@ -47,7 +53,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
       fetch("https://restaurant-site.netlify.com/contact/?no-cache=1", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: JSON.stringify({ "form-name": "contact", ...this.state })
+        body: this.encode({ "form-name": "contact", ...this.state })
       })
         .then(() => alert("Success!"))
         .catch(error => alert(error));

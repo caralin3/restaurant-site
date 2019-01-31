@@ -29,7 +29,7 @@ module.exports = {
     siteUrl: `https://joespizza-demo.netlify.com/`,
     description: `Static Website for Local Restaurant with CMS integration`,
   },
-  pathPrefix: '/gatsby-contentful-starter',
+  // pathPrefix: '/gatsby-contentful-starter',
   plugins: [
     'gatsby-plugin-sass',
     'gatsby-plugin-typescript',

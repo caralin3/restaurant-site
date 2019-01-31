@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout } from '../components';
+import { Layout, NetlifyForm, SubLabel } from '../components';
 import styles from '../appearance/styles/Contact.module.scss';
 
 interface ContactProps {}
@@ -73,27 +73,16 @@ export default class Contact extends React.Component<ContactProps, ContactState>
       <Layout pageTitle="Contact">
         <div className={styles.contact}>
           {!submitted ?
-          <form
-            action="/no-cache=1"
-            name="contact"
-            data-netlify="true"
-            data-netlify-honeypot="bot"
-            method="POST"
+          <NetlifyForm
             className={styles.form}
+            name="contact"
             onSubmit={(e) => this.handleSubmit(e)}
           >
             <h2 className={styles.title}>Contact Us</h2>
             {error && <p>{error}</p>}
-            <input type="hidden" name="form-name" value="contact" />
-            <p hidden>
-              <label>
-                Don't fill this out: {' '}
-                <input name="bot" />
-              </label>
-            </p>
             <label className={styles.field}>
               <span className={styles.label}>
-                Name <small className={styles.sublabel}>(optional)</small>
+                Name <SubLabel text="(optional)" />
               </span>
               <input
                 className={styles.input}
@@ -131,7 +120,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
             <button className={styles.button} type="submit">
               Send
             </button>
-          </form> : 
+          </NetlifyForm> : 
           <div className={styles.form}>
             <h2 className={styles.title}>Thank you for your submission!</h2>
             <p>We will respond via email as soon as possible.</p>

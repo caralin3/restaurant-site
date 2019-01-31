@@ -7,4 +7,4 @@ export const validPhone = (phone: string) => {
   const value = phone.replace(/[^\d]/g, '');
   const isNum = /^\d+$/.test(value);
   return (isNum && value.length === 10);
-}
+};

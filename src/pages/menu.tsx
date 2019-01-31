@@ -6,7 +6,7 @@ import { ContentfulFood, FoodData } from '../types';
 import styles from '../appearance/styles/Menu.module.scss';
 
 interface MenuProps {
-  data: FoodData
+  data: FoodData;
 }
 
 export default class Menu extends React.Component<MenuProps> {
@@ -22,7 +22,7 @@ export default class Menu extends React.Component<MenuProps> {
       'sandwiches',
       'desserts',
       'drinks'
-    ]
+    ];
 
     const section = (header: string) => (
       food.map((edge, i) => {
@@ -31,7 +31,7 @@ export default class Menu extends React.Component<MenuProps> {
             <div key={i}>
               {edge.node.name}
             </div>
-          )
+          );
         }
       })
     );
@@ -65,4 +65,4 @@ export const MenuQuery = graphql`
       }
     }
   }
-`
+`;

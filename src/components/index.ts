@@ -38,4 +38,4 @@ export {
   TextInput,
   TimeInput,
   ValidationText
-}
+};

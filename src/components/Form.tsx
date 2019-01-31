@@ -21,7 +21,6 @@ export const Form: React.SFC<React.FormHTMLAttributes<HTMLFormElement>> = ({
 export const NetlifyForm: React.SFC<React.FormHTMLAttributes<HTMLFormElement>> = ({
   children,
   name,
-  onSubmit,
   ...props
 }) => (
     <Form

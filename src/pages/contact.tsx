@@ -10,7 +10,7 @@ import {
   ValidationText
 } from '../components';
 import { ContactResponse } from '../types';
-import { encode } from '../utils';
+import { encode, validEmail } from '../utils';
 
 interface ContactProps { }
 
@@ -38,16 +38,10 @@ export default class Contact extends React.Component<ContactProps, ContactState>
       message: true,
     }
   };
-
-  private isValidEmail = () => {
-    const { email } = this.state;
-    const regExp = /\S+@\S+\.\S+/;
-    return regExp.test(email);
-  };
-
+  
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const { email, message, name } = this.state;
-    if (!!email && this.isValidEmail() && !!message) {
+    if (!!email && validEmail(email) && !!message) {
       const data: ContactResponse = {
         email,
         name,
@@ -67,7 +61,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
     } else {
       this.setState({
         valid: {
-          email: !!email || this.isValidEmail(),
+          email: !!email || validEmail(email),
           message: !!message,
         }
       });

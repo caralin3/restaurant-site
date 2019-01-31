@@ -114,4 +114,4 @@ export const ValidationText: React.SFC<ValidationTextProps> = ({
   ...props
 }) => (
   <small {...props}>{!!text ? text : 'Field is required'}</small>
-)
+);

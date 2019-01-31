@@ -6,4 +6,4 @@ export const getAddress = (location: Location) => ({
   state: location.state,
   street: location.street,
   zipCode: location.zipCode
-})
+});

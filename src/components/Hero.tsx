@@ -28,7 +28,7 @@ export const HeroComponent: React.SFC<HeroPropsWithData> = ({data}) => {
       </div>
     </div>
   );
-}
+};
 
 export const Hero: React.SFC<HeroProps> = (props) => (
   <StaticQuery
@@ -61,4 +61,4 @@ const HeroQuery = graphql`
       }
     }
   }
-`
+`;

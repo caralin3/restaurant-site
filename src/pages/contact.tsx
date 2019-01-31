@@ -10,8 +10,9 @@ import {
   ValidationText
 } from '../components';
 import { ContactResponse } from '../types';
+import { encode } from '../utils';
 
-interface ContactProps {}
+interface ContactProps { }
 
 interface ContactState {
   email: string;
@@ -22,7 +23,7 @@ interface ContactState {
   valid: {
     email: boolean;
     message: boolean;
-  }
+  };
 }
 
 export default class Contact extends React.Component<ContactProps, ContactState> {
@@ -36,19 +37,13 @@ export default class Contact extends React.Component<ContactProps, ContactState>
       email: true,
       message: true,
     }
-  }
+  };
 
   private isValidEmail = () => {
     const { email } = this.state;
     const regExp = /\S+@\S+\.\S+/;
     return regExp.test(email);
   };
-
-  private encode = (data: any) => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  }
 
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const { email, message, name } = this.state;
@@ -57,16 +52,16 @@ export default class Contact extends React.Component<ContactProps, ContactState>
         email,
         name,
         message,
-      }
+      };
       fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
-        method: "POST",
+        method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({ 'form-name': 'contact', ...data })
+        body: encode({ 'form-name': 'contact', ...data })
       })
         .then(() => this.setState({ submitted: true }))
         .catch(error => {
           console.error(error);
-          this.setState({ error: 'Submission failed. Please try again in a few minutes.' })
+          this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
         });
 
     } else {
@@ -86,57 +81,57 @@ export default class Contact extends React.Component<ContactProps, ContactState>
       <Layout pageTitle="Contact">
         <div className={styles.contact}>
           {!submitted ?
-          <NetlifyForm
-            className={styles.form}
-            name="contact"
-            onSubmit={(e) => this.handleSubmit(e)}
-          >
-            <h2 className={styles.title}>Contact Us</h2>
-            {error && <p>{error}</p>}
-            <Label className={styles.field} text="Name" subtext="(optional)">
-              <TextInput
-                className={styles.input}
-                name="name"
-                placeholder="Firstname Lastname"
-                onChange={(e) => this.setState({ name: e.target.value })}
-                value={name}
-              />
-            </Label>
-            <Label className={styles.field} text="Email">
-              <EmailInput
-                className={styles.input}
-                onChange={(e) =>
-                  this.setState({
-                    email: e.target.value,
-                    valid: {...valid, email: true}
-                  })
-                }
-                value={email}
-              />
-              {!valid.email && <ValidationText />}
-            </Label>
-            <Label className={styles.field} text="Message">
-              <TextArea
-                className={styles.textarea}
-                name="message"
-                onChange={(e) =>
-                  this.setState({
-                    message: e.target.value,
-                    valid: {...valid, message: true} 
-                  })
-                }
-                value={message}
-              />
-              {!valid.message && <ValidationText />}
-            </Label>
-            <button className={styles.button} type="submit">
-              Send
+            <NetlifyForm
+              className={styles.form}
+              name="contact"
+              onSubmit={(e) => this.handleSubmit(e)}
+            >
+              <h2 className={styles.title}>Contact Us</h2>
+              {error && <p>{error}</p>}
+              <Label className={styles.field} text="Name" subtext="(optional)">
+                <TextInput
+                  className={styles.input}
+                  name="name"
+                  placeholder="Firstname Lastname"
+                  onChange={(e) => this.setState({ name: e.target.value })}
+                  value={name}
+                />
+              </Label>
+              <Label className={styles.field} text="Email">
+                <EmailInput
+                  className={styles.input}
+                  onChange={(e) =>
+                    this.setState({
+                      email: e.target.value,
+                      valid: { ...valid, email: true }
+                    })
+                  }
+                  value={email}
+                />
+                {!valid.email && <ValidationText />}
+              </Label>
+              <Label className={styles.field} text="Message">
+                <TextArea
+                  className={styles.textarea}
+                  name="message"
+                  onChange={(e) =>
+                    this.setState({
+                      message: e.target.value,
+                      valid: { ...valid, message: true }
+                    })
+                  }
+                  value={message}
+                />
+                {!valid.message && <ValidationText />}
+              </Label>
+              <button className={styles.button} type="submit">
+                Send
             </button>
-          </NetlifyForm> : 
-          <div className={styles.form}>
-            <h2 className={styles.title}>Thank you for your submission!</h2>
-            <p>We will respond via email as soon as possible.</p>
-          </div>
+            </NetlifyForm> :
+            <div className={styles.form}>
+              <h2 className={styles.title}>Thank you for your submission!</h2>
+              <p>We will respond via email as soon as possible.</p>
+            </div>
           }
         </div>
       </Layout>

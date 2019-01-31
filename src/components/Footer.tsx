@@ -28,7 +28,7 @@ export const FooterComponent: React.SFC<FooterPropsWithData> = ({data}) => {
       class: 'fa-instagram',
       url: profile.instagram
     }
-  ]
+  ];
 
   return (
     <footer className={styles.footer}>
@@ -56,7 +56,7 @@ export const FooterComponent: React.SFC<FooterPropsWithData> = ({data}) => {
       </span>
     </footer>
   );
-}
+};
 
 export const Footer: React.SFC<FooterProps> = (props) => (
   <StaticQuery
@@ -93,4 +93,4 @@ const FooterQuery = graphql`
       }
     }
   }
-`
+`;

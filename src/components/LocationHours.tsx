@@ -44,8 +44,8 @@ export const LocationHoursComponent: React.SFC<
         </a>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export const LocationHours: React.SFC<LocationHoursProps> = (props) => (
   <StaticQuery
@@ -77,4 +77,4 @@ const LocationHoursQuery = graphql`
       }
     }
   }
-`
+`;

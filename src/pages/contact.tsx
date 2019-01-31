@@ -1,6 +1,15 @@
 import React from 'react';
-import { Layout, NetlifyForm, SubLabel } from '../components';
 import styles from '../appearance/styles/Contact.module.scss';
+import {
+  EmailInput,
+  Label,
+  Layout,
+  NetlifyForm,
+  TextArea,
+  TextInput,
+  ValidationText
+} from '../components';
+import { ContactResponse } from '../types';
 
 interface ContactProps {}
 
@@ -44,10 +53,15 @@ export default class Contact extends React.Component<ContactProps, ContactState>
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const { email, message, name } = this.state;
     if (!!email && this.isValidEmail() && !!message) {
-      fetch("https://restaurant-site.netlify.com/contact/?no-cache=1", {
+      const data: ContactResponse = {
+        email,
+        name,
+        message,
+      }
+      fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: this.encode({ "form-name": "contact", ...this.state })
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: this.encode({ 'form-name': 'contact', ...data })
       })
         .then(() => this.setState({ submitted: true }))
         .catch(error => {
@@ -63,7 +77,6 @@ export default class Contact extends React.Component<ContactProps, ContactState>
         }
       });
     }
-    e.preventDefault();
   }
 
   public render() {
@@ -80,43 +93,42 @@ export default class Contact extends React.Component<ContactProps, ContactState>
           >
             <h2 className={styles.title}>Contact Us</h2>
             {error && <p>{error}</p>}
-            <label className={styles.field}>
-              <span className={styles.label}>
-                Name <SubLabel text="(optional)" />
-              </span>
-              <input
+            <Label className={styles.field} text="Name" subtext="(optional)">
+              <TextInput
                 className={styles.input}
                 name="name"
+                placeholder="Firstname Lastname"
                 onChange={(e) => this.setState({ name: e.target.value })}
-                type="text"
                 value={name}
               />
-            </label>
-            <label className={styles.field}>
-              <span className={styles.label}>
-                Email
-              </span>
-              <input
+            </Label>
+            <Label className={styles.field} text="Email">
+              <EmailInput
                 className={styles.input}
-                name="email"
-                onChange={(e) => this.setState({ email: e.target.value, valid: {...valid, email: true} })}
-                type="email"
+                onChange={(e) =>
+                  this.setState({
+                    email: e.target.value,
+                    valid: {...valid, email: true}
+                  })
+                }
                 value={email}
               />
-              {!valid.email && <small className={styles.invalid}>Email is required</small>}
-            </label>
-            <label className={styles.field}>
-              <span className={styles.label}>
-                Message
-              </span>
-              <textarea
+              {!valid.email && <ValidationText />}
+            </Label>
+            <Label className={styles.field} text="Message">
+              <TextArea
                 className={styles.textarea}
                 name="message"
-                onChange={(e) => this.setState({ message: e.target.value, valid: {...valid, message: true}  })}
+                onChange={(e) =>
+                  this.setState({
+                    message: e.target.value,
+                    valid: {...valid, message: true} 
+                  })
+                }
                 value={message}
               />
-              {!valid.message && <small className={styles.invalid}>Message is required</small>}
-            </label>
+              {!valid.message && <ValidationText />}
+            </Label>
             <button className={styles.button} type="submit">
               Send
             </button>

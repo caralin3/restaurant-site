@@ -1,5 +1,17 @@
 import { Footer } from './Footer';
-import { Form, NetlifyForm, SubLabel } from './Form';
+import {
+  DateInput,
+  EmailInput,
+  Form,
+  Label,
+  NetlifyForm,
+  NumberInput,
+  PhoneInput,
+  TextArea,
+  TextInput,
+  TimeInput,
+  ValidationText
+} from './Form';
 import { Hero } from './Hero';
 import { Intro } from './Intro';
 import { Layout } from './Layout';
@@ -8,14 +20,22 @@ import { Navigation } from './Navigation';
 import { Specials } from './Specials';
 
 export {
+  DateInput,
+  EmailInput,
   Footer,
   Form,
   Hero,
   Intro,
+  Label,
   Layout,
   LocationHours,
   Navigation,
   NetlifyForm,
+  NumberInput,
+  PhoneInput,
   Specials,
-  SubLabel
+  TextArea,
+  TextInput,
+  TimeInput,
+  ValidationText
 }

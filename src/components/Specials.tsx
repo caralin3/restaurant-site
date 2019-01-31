@@ -11,4 +11,4 @@ export const Specials: React.SFC<SpecialsProps> = (props) => (
       <p>$7.99</p>
     </div>
   </div>
-)
+);

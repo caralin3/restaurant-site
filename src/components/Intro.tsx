@@ -20,7 +20,7 @@ export const IntroComponent: React.SFC<IntroPropsWithData> = ({data}) => {
       </div>
     </div>
   );
-}
+};
 
 export const Intro: React.SFC<IntroProps> = (props) => (
   <StaticQuery
@@ -41,4 +41,4 @@ const IntroQuery = graphql`
       }
     }
   }
-`
+`;

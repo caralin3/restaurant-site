@@ -14,7 +14,7 @@ import {
   ValidationText
 } from '../components';
 import { CateringResponse } from '../types';
-import { validEmail, validPhone, formatDate, formatTime, formatPhone } from '../utils';
+import { validEmail, validPhone, formatDate, formatTime, formatPhone, encode } from '../utils';
 
 interface CateringProps { }
 
@@ -37,7 +37,7 @@ interface CateringState {
     name: boolean;
     phone: boolean;
     time: boolean;
-  }
+  };
 }
 
 export default class Catering extends React.Component<CateringProps, CateringState> {
@@ -61,7 +61,7 @@ export default class Catering extends React.Component<CateringProps, CateringSta
       phone: true,
       time: true,
     }
-  }
+  };
 
   private isValidForm = () => {
     const { count, date, email, event, name, phone, time } = this.state;
@@ -76,13 +76,7 @@ export default class Catering extends React.Component<CateringProps, CateringSta
       !!phone &&
       validPhone(phone) &&
       !!time
-    )
-  }
-
-  private encode = (data: any) => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
-      .join('&');
+    );
   }
 
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -97,16 +91,16 @@ export default class Catering extends React.Component<CateringProps, CateringSta
         date: formatDate(date),
         phone: formatPhone(phone),
         time: formatTime(time),
-      }
+      };
       fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({ 'form-name': 'catering', ...data })
+        body: encode({ 'form-name': 'catering', ...data })
       })
         .then(() => this.setState({ submitted: true }))
         .catch(error => {
           console.error(error);
-          this.setState({ error: 'Submission failed. Please try again in a few minutes.' })
+          this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
         });
     } else {
       this.setState({

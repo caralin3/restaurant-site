@@ -32,7 +32,7 @@ const LayoutComponent: React.SFC<LayoutPropsWithData> = (props) => {
       <Footer />
     </div>
   );
-}
+};
 
 export const Layout: React.SFC<LayoutProps> = (props) => (
   <StaticQuery
@@ -49,4 +49,4 @@ const LayoutQuery = graphql`
       }
     }
   }
-`
+`;

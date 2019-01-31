@@ -10,6 +10,7 @@ import {
   ValidationText
 } from '../components';
 import { ContactResponse } from '../types';
+import { encode } from '../utils';
 
 interface ContactProps { }
 
@@ -22,7 +23,7 @@ interface ContactState {
   valid: {
     email: boolean;
     message: boolean;
-  }
+  };
 }
 
 export default class Contact extends React.Component<ContactProps, ContactState> {
@@ -36,19 +37,13 @@ export default class Contact extends React.Component<ContactProps, ContactState>
       email: true,
       message: true,
     }
-  }
+  };
 
   private isValidEmail = () => {
     const { email } = this.state;
     const regExp = /\S+@\S+\.\S+/;
     return regExp.test(email);
   };
-
-  private encode = (data: any) => {
-    return Object.keys(data)
-      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-      .join("&");
-  }
 
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const { email, message, name } = this.state;
@@ -57,16 +52,16 @@ export default class Contact extends React.Component<ContactProps, ContactState>
         email,
         name,
         message,
-      }
+      };
       fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
-        method: "POST",
+        method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({ 'form-name': 'contact', ...data })
+        body: encode({ 'form-name': 'contact', ...data })
       })
         .then(() => this.setState({ submitted: true }))
         .catch(error => {
           console.error(error);
-          this.setState({ error: 'Submission failed. Please try again in a few minutes.' })
+          this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
         });
 
     } else {

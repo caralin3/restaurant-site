@@ -21,12 +21,12 @@ const routes: NavRoute[] = [
   {path: '/catering', label: 'Catering'},
   // {path: '/order', label: 'Order Online'},
   {path: '/contact', label: 'Contact'},
-]
+];
 
 export class Navigation extends React.Component<NavigationProps, NavigationState> {
   readonly state: NavigationState = {
     show: false
-  }
+  };
 
   public render() {
     const { show } = this.state;
@@ -40,7 +40,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
           </li>
         ))}
       </ul>
-    )
+    );
 
     const mobileMenu = (
       <ul className={styles.mobileMenu}>
@@ -50,7 +50,7 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
           </li>
         ))}
       </ul>
-    )
+    );
 
     return (
       <nav className={styles.nav} role="navigation">
@@ -60,11 +60,11 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
           </p>
           {navMenu}
           <span className={styles.menu} onClick={() => this.setState({ show: !show })}>
-            <i className={"fas fa-bars"} />
+            <i className={'fas fa-bars'} />
           </span>
         </div>
         {show && mobileMenu}
       </nav>
-    )
+    );
   }
 }

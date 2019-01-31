@@ -1,10 +1,10 @@
 export const formatPhone = (num: string) => {
-  let value = num.replace(/[^\d]/g, '');
+  const value = num.replace(/[^\d]/g, '');
   if (value.length === 10) {
     return value.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
   }
   return num;
-}
+};
 
 export const formatDate = (date: string) => {
   const months = [
@@ -16,7 +16,7 @@ export const formatDate = (date: string) => {
   const day = value.getDay();
   const year = value.getFullYear();
   return `${month} ${day}, ${year}`;
-}
+};
 
 export const formatTime = (time: string) => {
   const values = time.split(':');
@@ -31,6 +31,7 @@ export const formatTime = (time: string) => {
   if (hh === 0) {
     hh = 12;
   }
-  const mm = m < 10 ? '0' + m : m;
+
+  const mm = m < 10 ? `0${m}` : m;
   return `${hh}:${mm} ${dd}`;
-}
+};

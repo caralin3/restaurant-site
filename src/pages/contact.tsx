@@ -11,7 +11,7 @@ import {
 } from '../components';
 import { ContactResponse } from '../types';
 
-interface ContactProps {}
+interface ContactProps { }
 
 interface ContactState {
   email: string;
@@ -86,57 +86,57 @@ export default class Contact extends React.Component<ContactProps, ContactState>
       <Layout pageTitle="Contact">
         <div className={styles.contact}>
           {!submitted ?
-          <NetlifyForm
-            className={styles.form}
-            name="contact"
-            onSubmit={(e) => this.handleSubmit(e)}
-          >
-            <h2 className={styles.title}>Contact Us</h2>
-            {error && <p>{error}</p>}
-            <Label className={styles.field} text="Name" subtext="(optional)">
-              <TextInput
-                className={styles.input}
-                name="name"
-                placeholder="Firstname Lastname"
-                onChange={(e) => this.setState({ name: e.target.value })}
-                value={name}
-              />
-            </Label>
-            <Label className={styles.field} text="Email">
-              <EmailInput
-                className={styles.input}
-                onChange={(e) =>
-                  this.setState({
-                    email: e.target.value,
-                    valid: {...valid, email: true}
-                  })
-                }
-                value={email}
-              />
-              {!valid.email && <ValidationText />}
-            </Label>
-            <Label className={styles.field} text="Message">
-              <TextArea
-                className={styles.textarea}
-                name="message"
-                onChange={(e) =>
-                  this.setState({
-                    message: e.target.value,
-                    valid: {...valid, message: true} 
-                  })
-                }
-                value={message}
-              />
-              {!valid.message && <ValidationText />}
-            </Label>
-            <button className={styles.button} type="submit">
-              Send
+            <NetlifyForm
+              className={styles.form}
+              name="contact"
+              onSubmit={(e) => this.handleSubmit(e)}
+            >
+              <h2 className={styles.title}>Contact Us</h2>
+              {error && <p>{error}</p>}
+              <Label className={styles.field} text="Name" subtext="(optional)">
+                <TextInput
+                  className={styles.input}
+                  name="name"
+                  placeholder="Firstname Lastname"
+                  onChange={(e) => this.setState({ name: e.target.value })}
+                  value={name}
+                />
+              </Label>
+              <Label className={styles.field} text="Email">
+                <EmailInput
+                  className={styles.input}
+                  onChange={(e) =>
+                    this.setState({
+                      email: e.target.value,
+                      valid: { ...valid, email: true }
+                    })
+                  }
+                  value={email}
+                />
+                {!valid.email && <ValidationText />}
+              </Label>
+              <Label className={styles.field} text="Message">
+                <TextArea
+                  className={styles.textarea}
+                  name="message"
+                  onChange={(e) =>
+                    this.setState({
+                      message: e.target.value,
+                      valid: { ...valid, message: true }
+                    })
+                  }
+                  value={message}
+                />
+                {!valid.message && <ValidationText />}
+              </Label>
+              <button className={styles.button} type="submit">
+                Send
             </button>
-          </NetlifyForm> : 
-          <div className={styles.form}>
-            <h2 className={styles.title}>Thank you for your submission!</h2>
-            <p>We will respond via email as soon as possible.</p>
-          </div>
+            </NetlifyForm> :
+            <div className={styles.form}>
+              <h2 className={styles.title}>Thank you for your submission!</h2>
+              <p>We will respond via email as soon as possible.</p>
+            </div>
           }
         </div>
       </Layout>

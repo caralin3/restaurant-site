@@ -26,8 +26,8 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: `Joe's Pizzeria & Restaurant`,
-    siteUrl: `https://www.joespizza.com`,
-    description: `Website for Restaurant`,
+    siteUrl: `https://joespizza.netlify.com/`,
+    description: `Static Website for Local Restaurant with CMS integration`,
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [

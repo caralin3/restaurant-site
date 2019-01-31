@@ -50,3 +50,21 @@ export interface Profile {
   longBio: ContentfulLongBio;
   twitter: string;
 }
+
+/** Form Submissions */
+export interface ContactResponse {
+  email: string;
+  name: string;
+  message: string;
+}
+
+export interface CateringResponse {
+  count: number;
+  date: string;
+  email: string;
+  event: string;
+  name: string;
+  notes: string;
+  phone: string;
+  time: string;
+}

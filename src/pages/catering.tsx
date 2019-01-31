@@ -13,7 +13,8 @@ import {
   TimeInput,
   ValidationText
 } from '../components';
-import { validEmail, validPhone } from '../utils';
+import { CateringResponse } from '../types';
+import { validEmail, validPhone, formatDate, formatTime, formatPhone } from '../utils';
 
 interface CateringProps {}
 
@@ -24,7 +25,7 @@ interface CateringState {
   error: string;
   event: string;
   name: string;
-  note: string;
+  notes: string;
   phone: string;
   submitted: boolean;
   time: string;
@@ -47,7 +48,7 @@ export default class Catering extends React.Component<CateringProps, CateringSta
     error: '',
     event: '',
     name: '',
-    note: '',
+    notes: '',
     phone: '',
     submitted: false,
     time: '',
@@ -66,6 +67,7 @@ export default class Catering extends React.Component<CateringProps, CateringSta
     const { count, date, email, event, name, phone, time } = this.state;
     return (
       !!count &&
+      count > 0 &&
       !!date &&
       !!email &&
       validEmail(email) &&
@@ -84,12 +86,22 @@ export default class Catering extends React.Component<CateringProps, CateringSta
   }
 
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    const { count, date, email, event, name, phone, time } = this.state;
+    const { count, date, email, event, name, notes, phone, time } = this.state;
     if (this.isValidForm()) {
+      const data: CateringResponse = {
+        count,
+        email,
+        event,
+        name,
+        notes,
+        date: formatDate(date),
+        phone: formatPhone(phone),
+        time: formatTime(time),
+      }
       fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
         method: "POST",
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({ 'form-name': 'catering', ...this.state })
+        body: this.encode({ 'form-name': 'catering', ...data })
       })
         .then(() => this.setState({ submitted: true }))
         .catch(error => {
@@ -112,7 +124,7 @@ export default class Catering extends React.Component<CateringProps, CateringSta
   }
 
   public render() {
-    const { count, date, email, error, event, name, note, phone, submitted, time, valid } = this.state;
+    const { count, date, email, error, event, name, notes, phone, submitted, time, valid } = this.state;
 
     return (
       <Layout pageTitle="Catering">
@@ -230,8 +242,8 @@ export default class Catering extends React.Component<CateringProps, CateringSta
                 className={styles.textarea}
                 name="notes"
                 placeholder="Let us know any additional information about your event..."
-                onChange={(e) => this.setState({ note: e.target.value })}
-                value={note}
+                onChange={(e) => this.setState({ notes: e.target.value })}
+                value={notes}
               />
             </Label>
             <button className={styles.button} type="submit">

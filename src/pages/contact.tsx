@@ -9,6 +9,7 @@ import {
   TextInput,
   ValidationText
 } from '../components';
+import { ContactResponse } from '../types';
 
 interface ContactProps {}
 
@@ -52,10 +53,15 @@ export default class Contact extends React.Component<ContactProps, ContactState>
   private handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     const { email, message, name } = this.state;
     if (!!email && this.isValidEmail() && !!message) {
+      const data: ContactResponse = {
+        email,
+        name,
+        message,
+      }
       fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
         method: "POST",
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: this.encode({ 'form-name': 'contact', ...this.state })
+        body: this.encode({ 'form-name': 'contact', ...data })
       })
         .then(() => this.setState({ submitted: true }))
         .catch(error => {

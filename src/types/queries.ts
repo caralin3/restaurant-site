@@ -1,4 +1,4 @@
-import { Food, Hours, Location, Profile } from './models';
+import { Coupon, Food, Hours, Location, MenuSection, Profile, Special } from './models';
 
 export interface SiteData {
   site: {
@@ -40,8 +40,33 @@ export interface FoodData {
   }
 }
 
+export interface MenuSectionData {
+  allContentfulMenuSection: {
+    edges: {
+      node: MenuSection
+    }[]
+  }
+}
+
+export interface SpecialsData {
+  allContentfulSpecial: {
+    edges: {
+      node: Special
+    }[]
+  }
+}
+
+export interface CouponData {
+  allContentfulCoupon: {
+    edges: {
+      node: Coupon
+    }[]
+  }
+}
+
 export interface HeroData extends
   LocationData,
+  ProfileData,
   SiteData {}
 
 export interface FooterData extends

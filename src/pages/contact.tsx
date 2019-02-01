@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../appearance/styles/Contact.module.scss';
 import {
+  Button,
   EmailInput,
   Label,
   Layout,
@@ -119,9 +120,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
                 />
                 {!valid.message && <ValidationText />}
               </Label>
-              <button className={styles.button} type="submit">
-                Send
-            </button>
+              <Button type="submit" text="Send" />
             </NetlifyForm> :
             <div className={styles.form}>
               <h2 className={styles.title}>Thank you for your submission!</h2>

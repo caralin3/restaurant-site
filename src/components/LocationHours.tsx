@@ -10,10 +10,7 @@ interface LocationHoursPropsWithData {
   data: LocationHoursData;
 }
 
-
-export const LocationHoursComponent: React.SFC<
-  LocationHoursPropsWithData
-> = ({data}) => {
+export const LocationHoursComponent: React.SFC<LocationHoursPropsWithData> = ({data}) => {
   const hours: ContentfulHours[] = sortDays(data.allContentfulHours.edges);
   const location = data.allContentfulLocations.edges[0].node;
   const { city, state, street, zipCode } = location;

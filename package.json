@@ -1,21 +1,14 @@
 {
-  "name": "gatsby-contentful-starter",
-  "description": "Starter Contentful Gatsby Blog",
+  "name": "static-cms-website-demo",
+  "description": "Static Website Demo for Local Restaurant with CMS integration",
   "version": "1.0.0",
-  "author": "Stefan Judis <stefanjudis@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/contentful-userland/gatsby-contentful-starter/issues"
-  },
-  "homepage": "https://github.com/contentful-userland/gatsby-contentful-starter#readme",
-  "keywords": [
-    "gatsby",
-    "contentful"
-  ],
+  "author": "Cara Steinberg",
+  "homepage": "https://github.com/caralin3/restaurant-site#readme",
   "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/contentful-userland/gatsby-contentful-starter.git"
+    "url": "git+https://github.com/caralin3/restaurant-site"
   },
   "scripts": {
     "start": "gatsby develop",

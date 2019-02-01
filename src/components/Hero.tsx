@@ -14,7 +14,7 @@ interface HeroPropsWithData {
 export const HeroComponent: React.SFC<HeroPropsWithData> = ({data}) => {
   const title = data.site.siteMetadata.title;
   const phone = data.allContentfulLocations.edges[0].node.phone;
-  const heroImage = data.allContentfulLocations.edges[0].node.heroImage as any;
+  const heroImage = data.allContentfulProfile.edges[0].node.heroImage as any;
 
   return (
     <div className={styles.hero}>
@@ -52,10 +52,16 @@ const HeroQuery = graphql`
           state
           zipCode
           phone
+        }
+      }
+    }
+    allContentfulProfile {
+      edges {
+        node {
           heroImage {
             fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
-               ...GatsbyContentfulFluid
-              }
+              ...GatsbyContentfulFluid
+            }
           }
         }
       }

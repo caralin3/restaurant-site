@@ -1,0 +1,70 @@
+@import '../appearance/styles/variables.scss';
+
+.coupons {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  @media #{$medium} {
+    flex-direction: row;
+    flex-wrap: none;
+    justify-content: flex-start;
+  }
+}
+
+.coupon {
+  align-items: center;
+  background-color: antiquewhite;
+  border: 2px dashed $black;
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+  justify-content: center;
+  margin: 1rem;
+  width: 50%;
+  padding: 0.5rem;
+  text-align: center;
+  
+  @media #{$medium} {
+    height: 12rem;
+    width: 15rem;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.couponTitle {
+  text-transform: uppercase;
+  
+  @media #{$medium} {
+    font-size: 16pt;
+  }
+}
+
+.couponPrice {
+  line-height: 2;
+  font-size: 16pt;
+  font-weight: bold;
+}
+
+.couponDescription {
+  font-size: 10pt;
+  text-overflow: wrap;
+
+  @media #{$medium} {
+    font-size: 12pt;
+  }
+}
+
+.couponDisclaimer {
+  font-size: 8pt;
+  padding-top: 1rem;
+
+  @media #{$medium} {
+    font-size: 10pt;
+  }
+}

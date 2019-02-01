@@ -26,7 +26,9 @@ export default class Menu extends React.Component<MenuProps> {
 
     const section = (header: string) => (
       food.map((edge, i) => {
-        if (edge.node.type === header) {
+        const sectionTitle = edge.node.section.title.toLowerCase();
+        const menu = edge.node.menu;
+        if (sectionTitle === header && menu === 'general') {
           return (
             <div key={i}>
               {edge.node.name}
@@ -57,10 +59,13 @@ export const MenuQuery = graphql`
       edges {
         node {
           name
+          section {
+            title
+          }
           meal
+          menu
           price
           shortDescription
-          type
         }
       }
     }

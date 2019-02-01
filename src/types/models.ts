@@ -7,7 +7,7 @@ export interface Address {
 }
 
 export interface Location extends Address {
-  heroImage: {
+  image: {
     fluid: (maxWidth?: number, maxHeight?: number, resizingBehavior?: any) => any;
   }
 }
@@ -25,29 +25,78 @@ export interface ContentfulHours {
 
 export interface Food {
   name: string;
-  price?: number;
-  type: string;
+  price: number;
+  priceSmall: number;
+  priceMedium: number;
+  section: MenuSection;
+  menu: 'general' | 'catering';
   meal: 'lunch' | 'dinner' | 'both';
+  note: string;
   shortDescription: string;
+  image: {
+    fluid: (maxWidth?: number, maxHeight?: number, resizingBehavior?: any) => any;
+  };
+}
+
+export interface MenuSection {
+  title: string;
+  subtitle: string;
+  note: string;
+}
+
+export interface Special {
+  title: string;
+  price: number;
+}
+
+export interface Coupon {
+  title: string;
+  shortDescription: string;
+  disclaimer: string;
+  discount: boolean;
+  price: number;
 }
 
 export interface ContentfulFood {
   node: Food;
 }
 
+export interface ContentfulProfile {
+  node: Profile;
+}
+
+export interface ContentfulCoupon {
+  node: Coupon;
+}
+
+export interface ContentfulSpecial {
+  node: Special;
+}
+
 export interface Social {
   url: string;
-  class: string
+  class: string;
+}
+
+export interface ContentfulIntro {
+  intro: string;
 }
 
 export interface ContentfulLongBio {
-  longBio: string
+  longBio: string;
+  childMarkdownRemark: {
+    html: string;
+  }
 }
 
 export interface Profile {
+  intro: ContentfulIntro;
+  longBio: ContentfulLongBio;
+  heroImage: {
+    fluid: (maxWidth?: number, maxHeight?: number, resizingBehavior?: any) => any;
+  };
   facebook: string;
   instagram: string;
-  longBio: ContentfulLongBio;
   twitter: string;
 }
 

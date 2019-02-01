@@ -1,5 +1,38 @@
 @import '../appearance/styles/variables.scss';
 
 .specials {
-  padding: 0 1rem;
+  align-items: center;
+  display: flex;
+}
+
+.special {
+  align-items: center;
+  background-color: antiquewhite;
+  border: 2px solid $black;
+  display: flex;
+  flex-direction: column;
+  height: 6rem;
+  justify-content: center;
+  margin: 1rem;
+  width: 12rem;
+  padding: 0.5rem;
+  text-align: center;
+
+  p {
+    margin: 0;
+  }
+}
+
+.specialTitle {
+  text-transform: uppercase;
+  
+  @media #{$medium} {
+    font-size: 12pt;
+  }
+}
+
+.specialPrice {
+  line-height: 2;
+  font-size: 14pt;
+  font-weight: bold;
 }

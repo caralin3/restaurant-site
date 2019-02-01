@@ -1,0 +1,22 @@
+@import '../appearance/styles/variables.scss';
+
+.button {
+  background: goldenrod;
+  border: none;
+  border-radius: 5px;
+  color: $white;
+  font-size: 12pt;
+  outline: none;
+  padding: 0.5rem 1rem;
+
+  @media #{$medium} {
+    font-size: 14pt;
+  }
+
+  &:focus,
+  &:hover,
+  &:active {
+    background: darken(goldenrod, 10%);
+    cursor: pointer;
+  }
+}

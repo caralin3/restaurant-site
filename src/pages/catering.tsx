@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../appearance/styles/Contact.module.scss';
 import {
+  Button,
   DateInput,
   EmailInput,
   Label,
@@ -92,16 +93,17 @@ export default class Catering extends React.Component<CateringProps, CateringSta
         phone: formatPhone(phone),
         time: formatTime(time),
       };
-      fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'catering', ...data })
-      })
-        .then(() => this.setState({ submitted: true }))
-        .catch(error => {
-          console.error(error);
-          this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
-        });
+      // fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      //   body: encode({ 'form-name': 'catering', ...data })
+      // })
+      //   .then(() => this.setState({ submitted: true }))
+      //   .catch(error => {
+      //     console.error(error);
+      //     this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
+      //   });
+      this.setState({ submitted: true });
     } else {
       this.setState({
         valid: {
@@ -240,9 +242,7 @@ export default class Catering extends React.Component<CateringProps, CateringSta
                   value={notes}
                 />
               </Label>
-              <button className={styles.button} type="submit">
-                Send
-            </button>
+              <Button type="submit" text="Send" />
             </NetlifyForm> :
             <div className={styles.form}>
               <h2 className={styles.title}>Thank you for your submission!</h2>

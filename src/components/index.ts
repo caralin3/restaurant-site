@@ -1,3 +1,5 @@
+import { Button } from './Button';
+import { Coupons } from './Coupons';
 import { Footer } from './Footer';
 import {
   DateInput,
@@ -20,6 +22,8 @@ import { Navigation } from './Navigation';
 import { Specials } from './Specials';
 
 export {
+  Button,
+  Coupons,
   DateInput,
   EmailInput,
   Footer,

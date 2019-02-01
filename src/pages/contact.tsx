@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from '../appearance/styles/Contact.module.scss';
 import {
+  Button,
   EmailInput,
   Label,
   Layout,
@@ -47,16 +48,17 @@ export default class Contact extends React.Component<ContactProps, ContactState>
         name,
         message,
       };
-      fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encode({ 'form-name': 'contact', ...data })
-      })
-        .then(() => this.setState({ submitted: true }))
-        .catch(error => {
-          console.error(error);
-          this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
-        });
+      // fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      //   body: encode({ 'form-name': 'contact', ...data })
+      // })
+      //   .then(() => this.setState({ submitted: true }))
+      //   .catch(error => {
+      //     console.error(error);
+      //     this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
+      //   });
+      this.setState({ submitted: true });
 
     } else {
       this.setState({
@@ -118,9 +120,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
                 />
                 {!valid.message && <ValidationText />}
               </Label>
-              <button className={styles.button} type="submit">
-                Send
-            </button>
+              <Button type="submit" text="Send" />
             </NetlifyForm> :
             <div className={styles.form}>
               <h2 className={styles.title}>Thank you for your submission!</h2>

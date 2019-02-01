@@ -48,7 +48,7 @@ export interface MenuSectionData {
   }
 }
 
-export interface SpecialsData {
+export interface SpecialData {
   allContentfulSpecial: {
     edges: {
       node: Special

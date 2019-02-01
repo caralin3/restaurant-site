@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Coupons, Hero, Intro, Layout, LocationHours } from '../components';
+import { Coupons, Hero, Intro, Layout, LocationHours, Specials } from '../components';
 import '../appearance/styles/Index.module.scss';
 import styles from '../appearance/styles/Home.module.scss';
 
@@ -15,6 +15,7 @@ export default class Index extends React.Component<IndexProps> {
           <Intro />
           <LocationHours />
         </div>
+        <Specials />
         <Coupons />
       </Layout>
     );

@@ -27,9 +27,8 @@ module.exports = {
   siteMetadata: {
     title: `Joe's Pizzeria & Restaurant`,
     siteUrl: `https://joespizza-demo.netlify.com/`,
-    description: `Static Website for Local Restaurant with CMS integration`,
+    description: `Static Website Demo for Local Restaurant with CMS integration`,
   },
-  // pathPrefix: '/gatsby-contentful-starter',
   plugins: [
     'gatsby-plugin-sass',
     'gatsby-plugin-typescript',

@@ -6,21 +6,12 @@ This site was built using [Gatsby](https://www.gatsbyjs.org) for the static site
 
 ## Technology
 
-* [Contentful Integration](https://www.contentful.com)
+* [Gatsby](https://www.gatsbyjs.org)
+* [Contentful CMS](https://www.contentful.com)
 * Responsive/adaptive images via [gatsby-image](https://www.gatsbyjs.org/packages/gatsby-image/)
 * [SCSS](https://sass-lang.com/) for styling
 
-## Requirements
 
-To use this project you have to have a Contentful account. If you don't have one yet you can register at [www.contentful.com/sign-up](https://www.contentful.com/sign-up/).
+## Demo
 
-## Getting started
-
-Install [Yarn](https://yarnpkg.com/en/docs/install) (if you haven't already).
-
-### Get the source code and install dependencies.
-
-```
-$ git clone <add-repo>
-$ yarn install
-```
+To view this demo visit [https://joespizza-demo.netlify.com/](https://joespizza-demo.netlify.com/)

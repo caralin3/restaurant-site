@@ -133,9 +133,8 @@ export default class Catering extends React.Component<CateringProps, CateringSta
             >
               <h2 className={styles.title}>Catering Inquiry</h2>
               {error && <p>{error}</p>}
-              <Label className={styles.field} text="Name">
+              <Label text="Name">
                 <TextInput
-                  className={styles.input}
                   name="name"
                   placeholder="Firstname Lastname"
                   onChange={(e) =>
@@ -148,9 +147,8 @@ export default class Catering extends React.Component<CateringProps, CateringSta
                 />
                 {!valid.name && <ValidationText />}
               </Label>
-              <Label className={styles.field} text="Email">
+              <Label text="Email">
                 <EmailInput
-                  className={styles.input}
                   onChange={(e) =>
                     this.setState({
                       email: e.target.value,
@@ -161,9 +159,8 @@ export default class Catering extends React.Component<CateringProps, CateringSta
                 />
                 {!valid.email && <ValidationText />}
               </Label>
-              <Label className={styles.field} text="Phone">
+              <Label text="Phone">
                 <PhoneInput
-                  className={styles.input}
                   onChange={(e) =>
                     this.setState({
                       phone: e.target.value,
@@ -176,9 +173,8 @@ export default class Catering extends React.Component<CateringProps, CateringSta
                   <ValidationText text="Invalid Format" />)
                 }
               </Label>
-              <Label className={styles.field} text="Type of Event">
+              <Label text="Type of Event">
                 <TextInput
-                  className={styles.input}
                   name="event"
                   placeholder="Graduation, Birthday, etc."
                   onChange={(e) =>
@@ -191,9 +187,8 @@ export default class Catering extends React.Component<CateringProps, CateringSta
                 />
                 {!valid.event && <ValidationText />}
               </Label>
-              <Label className={styles.field} text="Catering Date">
+              <Label text="Catering Date">
                 <DateInput
-                  className={styles.input}
                   name="date"
                   onChange={(e) =>
                     this.setState({
@@ -205,9 +200,8 @@ export default class Catering extends React.Component<CateringProps, CateringSta
                 />
                 {!valid.date && <ValidationText />}
               </Label>
-              <Label className={styles.field} text="Catering Time">
+              <Label text="Catering Time">
                 <TimeInput
-                  className={styles.input}
                   name="time"
                   onChange={(e) =>
                     this.setState({
@@ -219,9 +213,8 @@ export default class Catering extends React.Component<CateringProps, CateringSta
                 />
                 {!valid.time && <ValidationText />}
               </Label>
-              <Label className={styles.field} text="Number of People">
+              <Label text="Number of People">
                 <NumberInput
-                  className={styles.input}
                   name="count"
                   onChange={(e) =>
                     this.setState({
@@ -233,9 +226,8 @@ export default class Catering extends React.Component<CateringProps, CateringSta
                 />
                 {!valid.count && <ValidationText />}
               </Label>
-              <Label className={styles.field} text="Additional Notes">
+              <Label text="Additional Notes">
                 <TextArea
-                  className={styles.textarea}
                   name="notes"
                   placeholder="Let us know any additional information about your event..."
                   onChange={(e) => this.setState({ notes: e.target.value })}

@@ -1,0 +1,61 @@
+@import '../appearance/styles/variables.scss';
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: bold;
+
+  &_asterix {
+    color: $primary;
+    padding-left: 3px;
+  }
+
+  &_small {
+    font-weight: normal;
+  }
+}
+
+.input {
+  border-radius: 5px;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  width: 15rem;
+  
+  @media #{$medium} {
+    // width: 20rem;
+  }
+
+  @media #{$large} {
+    width: 20rem;
+  }
+}
+
+.textarea {
+  border-radius: 5px;
+  height: 5rem;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
+  overflow: auto;
+  width: 15rem;
+  
+  @media #{$medium} {
+    // width: 20rem;
+  }
+
+  @media #{$large} {
+    width: 20rem;
+  }
+}
+
+.validation {
+  color: $primary;
+  margin: 0;
+  padding: 0;
+}

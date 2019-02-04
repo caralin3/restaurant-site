@@ -16,7 +16,7 @@ export const HoursComponent: React.SFC<HoursPropsWithData> = ({data}) => {
   return (
     <div className={styles.hours}>
       <p className={styles.hours_title}>Hours</p>
-      {hours.slice(3).map((edge, i) => (
+      {!!hours && hours.slice(3).map((edge, i) => (
         <span className={styles.hours_item} key={i}>
           <p className={styles.hours_label}>
             {edge.node.daysOfTheWeek}

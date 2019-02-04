@@ -1,5 +1,5 @@
 import React from 'react';
-// import styles from './Form.module.scss';
+import styles from './Form.module.scss';
 
 export const Form: React.SFC<React.FormHTMLAttributes<HTMLFormElement>> = ({
   children,
@@ -43,6 +43,7 @@ export const NetlifyForm: React.SFC<React.FormHTMLAttributes<HTMLFormElement>> =
   );
 
 interface LabelProps extends React.HTMLProps<HTMLLabelElement> {
+  required?: boolean;
   subtext?: string;
   text: string;
 }
@@ -51,52 +52,49 @@ export const Label: React.SFC<LabelProps> = ({
   children,
   text,
   subtext,
+  required,
   ...props
 }) => (
-    <label {...props}>
-      <p>
-        {text} {' '}
-        <small>{subtext}</small>
+    <label className={styles.field} {...props}>
+      <p className={styles.label}>
+        {text}
+        {required && <span className={styles.label_asterix}>*</span>}
+        {' '}
+        <small className={styles.label_small}>{subtext}</small>
       </p>
       {children}
     </label>
   );
 
 export const TextInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
-  // className,
   ...props
-}) => <input type="text" {...props} />;
+}) => <input className={styles.input} type="text" {...props} />;
 
 export const TextArea: React.SFC<React.InputHTMLAttributes<HTMLTextAreaElement>> = ({
-  // className,
   ...props
-}) => <textarea type="text" {...props} />;
+}) => <textarea className={styles.textarea} type="text" {...props} />;
 
 export const EmailInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
-  // className,
   ...props
-}) => <input type="email" name="email" placeholder="example@email.com" {...props} />;
+}) => <input className={styles.input} type="email" name="email" placeholder="example@email.com" {...props} />;
 
 export const NumberInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
-  // className,
   ...props
-}) => <input type="number" {...props} />;
+}) => <input className={styles.input} type="number" {...props} />;
 
 export const DateInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
-  // className,
   ...props
-}) => <input type="date" {...props} />;
+}) => <input className={styles.input} type="date" {...props} />;
 
 export const TimeInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
-  // className,
   ...props
-}) => <input type="time" {...props} />;
+}) => <input className={styles.input} type="time" {...props} />;
 
 export const PhoneInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
-  // className,
   ...props
 }) =>
   <input
+    className={styles.input}
     aria-label="phone_input"
     maxLength={14}
     name="phone"
@@ -113,5 +111,5 @@ export const ValidationText: React.SFC<ValidationTextProps> = ({
   text,
   ...props
 }) => (
-  <small {...props}>{!!text ? text : 'Field is required'}</small>
+  <small className={styles.validation} {...props}>{!!text ? text : 'Field is required'}</small>
 );

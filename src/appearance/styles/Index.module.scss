@@ -3,7 +3,7 @@
 
 html,
 body {
-  font-family: sans-serif;
+  font-family: $montserrat;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -19,24 +19,10 @@ a {
 }
 
 button {
-  background: goldenrod;
+  background: none;
   border: none;
-  border-radius: 5px;
-  color: $white;
-  font-size: 12pt;
+  font-family: $montserrat;
   outline: none;
-  padding: 0.5rem 1rem;
-
-  @media #{$medium} {
-    font-size: 14pt;
-  }
-
-  &:focus,
-  &:hover,
-  &:active {
-    background: darken(goldenrod, 10%);
-    cursor: pointer;
-  }
 }
 
 .show-small {

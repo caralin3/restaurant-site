@@ -3,6 +3,7 @@ import Img from 'gatsby-image';
 import React from 'react';
 import { HeroData } from '../types';
 import { formatPhone } from '../utils/formatter';
+import buttonStyles from './Button.module.scss';
 import styles from './Hero.module.scss';
 
 interface HeroProps {}
@@ -21,10 +22,14 @@ export const HeroComponent: React.SFC<HeroPropsWithData> = ({data}) => {
       <Img className={styles.heroImage} alt={title} fluid={heroImage.fluid} />
       <div className={styles.heroDetails}>
         <p className={styles.heroTitle}>{title}</p>
-        <a className={styles.heroButton} href="/menu">View Menu</a>
-        <p className={styles.heroPhone}>
-          Call <strong>{formatPhone(phone)}</strong> to Order
-        </p>
+        <div className={styles.heroButtons}>
+          <a className={buttonStyles.button} href="/menu">View Menu</a>
+          <div className={styles.heroCallButton}>
+            <button className={buttonStyles.button}>
+              Call <strong>{formatPhone(phone)}</strong> to Order
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );

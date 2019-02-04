@@ -78,10 +78,6 @@ export interface Social {
   class: string;
 }
 
-export interface ContentfulIntro {
-  intro: string;
-}
-
 export interface ContentfulLongBio {
   longBio: string;
   childMarkdownRemark: {
@@ -90,11 +86,12 @@ export interface ContentfulLongBio {
 }
 
 export interface Profile {
-  intro: ContentfulIntro;
+  ourStory: string;
   longBio: ContentfulLongBio;
   heroImage: {
     fluid: (maxWidth?: number, maxHeight?: number, resizingBehavior?: any) => any;
   };
+  cateringDescription: string;
   facebook: string;
   instagram: string;
   twitter: string;

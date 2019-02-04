@@ -15,6 +15,7 @@ import {
   ValidationText
 } from './Form';
 import { Hero } from './Hero';
+import { Hours } from './Hours';
 import { Intro } from './Intro';
 import { Layout } from './Layout';
 import { LocationHours } from './LocationHours';
@@ -29,6 +30,7 @@ export {
   Footer,
   Form,
   Hero,
+  Hours,
   Intro,
   Label,
   Layout,

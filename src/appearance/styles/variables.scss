@@ -15,3 +15,6 @@ $small: "screen and (min-width: 375px)";
 $medium: "screen and (min-width: 768px)";
 $large: "screen and (min-width: 992px)";
 $x-large: "screen and (min-width: 1025px)";
+
+// detect
+$ie: "all and (-ms-high-contrast: none), (-ms-high-contrast: active)";

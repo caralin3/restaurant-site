@@ -10,13 +10,13 @@ interface IntroPropsWithData {
 }
 
 export const IntroComponent: React.SFC<IntroPropsWithData> = ({data}) => {
-  const intro = data.allContentfulProfile.edges[0].node.intro.intro;
+  // const intro = data.allContentfulProfile.edges[0].node.intro.intro;
 
   return (
     <div className={styles.intro}>
       <p className={styles.introTitle}>Welcome</p>
       <div className={styles.introText}>
-        <p>{intro}</p>
+        {/* <p>{intro}</p> */}
       </div>
     </div>
   );
@@ -34,8 +34,8 @@ const IntroQuery = graphql`
     allContentfulProfile {
       edges {
         node {
-          intro {
-            intro
+          longBio {
+            longBio
           }
         }
       }

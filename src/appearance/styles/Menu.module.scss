@@ -1,9 +1,11 @@
 @import './variables.scss';
 
 .menu {
+  align-items: center;
   color: $black;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
   padding-bottom: 1rem;
 

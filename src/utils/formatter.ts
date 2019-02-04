@@ -2,6 +2,10 @@ export const formatMoney = (amt: number) => (
   `$${amt.toFixed(2)}`
 );
 
+export const formatMoneyNoSign = (amt: number) => (
+  `${amt.toFixed(2)}`
+);
+
 export const formatPhone = (num: string) => {
   const value = num.replace(/[^\d]/g, '');
   if (value.length === 10) {

@@ -1,0 +1,54 @@
+@import '../appearance/styles/variables.scss';
+
+.menuSection {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+
+  &_title {
+    color: $primary;
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  &_sizes {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    &_small,
+    &_large {
+      font-size: 18px;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    &_small {
+      // flex: 0 2 0;
+    }
+
+    &_large {
+      // flex: 1 0 0;
+    }
+  }
+}
+
+.menuItem {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  &_name {
+    font-size: 18px;
+  }
+
+  &_price {
+    font-size: 18px;
+    font-weight: bold;
+  }
+}

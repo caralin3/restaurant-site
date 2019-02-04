@@ -19,10 +19,6 @@ export interface Hours {
   location: Location;
 }
 
-export interface ContentfulHours {
-  node: Hours;
-}
-
 export interface Food {
   name: string;
   price: number;
@@ -57,8 +53,16 @@ export interface Coupon {
   price: number;
 }
 
+export interface ContentfulHours {
+  node: Hours;
+}
+
 export interface ContentfulFood {
   node: Food;
+}
+
+export interface ContentfulMenuSection {
+  node: MenuSection;
 }
 
 export interface ContentfulProfile {

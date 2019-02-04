@@ -20,15 +20,17 @@
   }
 }
 
-.input {
+.input,
+.numberInput {
   border-radius: 5px;
   font-size: 14px;
+  height: 1.5rem;
   margin-bottom: 0.5rem;
   padding: 0.3rem 0.5rem;
   width: 15rem;
   
   @media #{$medium} {
-    // width: 20rem;
+    margin: 0 0.5rem 0.5rem;
   }
 
   @media #{$large} {
@@ -36,18 +38,25 @@
   }
 }
 
+.numberInput {
+  @media #{$medium} {
+    margin-right: 0.5rem;
+    width: 9.5rem;
+  }
+
+  @media #{$large} {
+    width: 12.5rem;
+  }
+}
+
 .textarea {
   border-radius: 5px;
-  height: 5rem;
+  height: 8rem;
   font-size: 14px;
   margin-bottom: 1rem;
   padding: 0 0.5rem;
   overflow: auto;
   width: 15rem;
-  
-  @media #{$medium} {
-    // width: 20rem;
-  }
 
   @media #{$large} {
     width: 20rem;

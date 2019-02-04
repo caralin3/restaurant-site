@@ -1,0 +1,136 @@
+@import './variables.scss';
+
+.catering {
+  align-items: center;
+  color: $black;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 0;
+
+  &_header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    @media #{$medium} {
+      flex-direction: row;
+      width: 100%;
+    }
+  }
+
+  &_title {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 0;
+
+    @media #{$medium} {
+     padding-left: 3rem;
+     padding-bottom: 2rem;
+    }
+  }
+
+  &_cta {
+    color: $primary;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 1rem 0;
+
+    &:focus,
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @media #{$medium} {
+      padding-right: 3rem;
+    }
+  }
+
+  &_copy {
+    font-size: 18px;
+    margin: 0;
+    padding: 0 3rem;
+    text-align: center;
+
+    @media #{$medium} {
+      align-self: flex-start;
+      padding-bottom: 2rem;
+      padding-left: 3rem;
+    }
+  }
+
+  &_form {
+    align-items: center;
+    color: $black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 0;
+  
+    @media #{$medium} {
+      padding: 0;
+      width: 75%;
+    }
+
+    &_title {
+      display: none;
+      
+      @media #{$medium} {
+        display: block;
+        font-size: 28px;
+        font-weight: bold;
+        margin: 0;
+      }
+    }
+
+    &_section {
+      @media #{$medium} {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+    }
+
+    &_textarea {
+      border-radius: 5px;
+      height: 8rem;
+      font-size: 14px;
+      margin-bottom: 1rem;
+      padding: 0 0.5rem;
+      overflow: auto;
+      width: 15rem;
+
+      @media #{$medium} {
+        width: 32rem;
+      }
+    
+      @media #{$large} {
+        width: 42rem;
+      }
+    }
+  }
+
+  &_confirm {
+    align-items: center;
+    border-radius: 5px;
+    color: $primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 1rem 2rem;
+    text-align: center;
+  
+    &_heading {
+      font-size: 18px;
+      font-weight: bold;
+      line-height: 2;
+      margin: 0;
+    }
+  
+    &_copy {
+      margin: 0;
+    }
+  }
+}

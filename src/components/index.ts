@@ -19,7 +19,6 @@ import { Hours } from './Hours';
 import { Intro } from './Intro';
 import { Layout } from './Layout';
 import { Location } from './Location';
-import { LocationHours } from './LocationHours';
 import { Navigation } from './Navigation';
 import { Specials } from './Specials';
 
@@ -36,7 +35,6 @@ export {
   Label,
   Layout,
   Location,
-  LocationHours,
   Navigation,
   NetlifyForm,
   NumberInput,

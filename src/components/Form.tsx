@@ -67,30 +67,45 @@ export const Label: React.SFC<LabelProps> = ({
   );
 
 export const TextInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
+  className,
   ...props
-}) => <input className={styles.input} type="text" {...props} />;
+}) => <input className={!!className ? className : styles.input} type="text" {...props} />;
 
 export const TextArea: React.SFC<React.InputHTMLAttributes<HTMLTextAreaElement>> = ({
+  className,
   ...props
-}) => <textarea className={styles.textarea} type="text" {...props} />;
+}) => <textarea className={!!className ? className : styles.textarea} type="text" {...props} />;
 
 export const EmailInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
+  className,
   ...props
-}) => <input className={styles.input} type="email" name="email" placeholder="example@email.com" {...props} />;
+}) =>
+  <input
+    className={!!className ? className : styles.input}
+    type="email"
+    name="email"
+    placeholder="example@email.com"
+    {...props}
+  />
+;
 
 export const NumberInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
+  className,
   ...props
-}) => <input className={styles.input} type="number" {...props} />;
+}) => <input className={!!className ? className : styles.numberInput} type="number" {...props} />;
 
 export const DateInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
+  className,
   ...props
-}) => <input className={styles.input} type="date" {...props} />;
+}) => <input className={!!className ? className : styles.numberInput} type="date" {...props} />;
 
 export const TimeInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
+  className,
   ...props
-}) => <input className={styles.input} type="time" {...props} />;
+}) => <input className={!!className ? className : styles.numberInput} type="time" {...props} />;
 
 export const PhoneInput: React.SFC<React.InputHTMLAttributes<HTMLInputElement>> = ({
+  className,
   ...props
 }) =>
   <input

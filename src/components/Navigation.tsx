@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styles from './Navigation.module.scss';
+import { Footer } from './';
 
 interface NavigationProps {
   title: string;
@@ -33,9 +34,9 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
     const { title } = this.props;
 
     const navMenu = (
-      <ul className={styles.navMenu}>
+      <ul className={styles.nav_menu}>
         {routes.map((route, i) => (
-          <li className={styles.navItem} key={i}>
+          <li className={styles.nav_item} key={i}>
             <Link to={route.path}>{route.label}</Link>
           </li>
         ))}
@@ -43,27 +44,33 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
     );
 
     const mobileMenu = (
-      <ul className={styles.mobileMenu}>
-        {routes.map((route, i) => (
-          <li className={styles.mobileItem} key={i}>
-            <Link to={route.path}>{route.label}</Link>
-          </li>
-        ))}
-      </ul>
+      <div className={show ? styles.mobile_open : styles.mobile}>
+        <ul className={styles.mobile_content}>
+          <span className={styles.mobile_button} onClick={() => this.setState({ show: !show })}>
+            <i className="fas fa-times" />
+          </span>
+          {routes.map((route, i) => (
+            <li className={styles.mobile_item} key={i}>
+              <Link to={route.path}>{route.label}</Link>
+            </li>
+          ))}
+        </ul>
+        <div className={styles.mobile_footer}>
+          <Footer />
+        </div>
+      </div>
     );
 
     return (
       <nav className={styles.nav} role="navigation">
-        <div className={styles.bar}>
-          <p className={styles.navTitle}>
+          <p className={styles.nav_title}>
             <Link to="/">{title}</Link>
           </p>
           {navMenu}
-          <span className={styles.menu} onClick={() => this.setState({ show: !show })}>
-            <i className={'fas fa-bars'} />
+          <span className={styles.nav_button} onClick={() => this.setState({ show: !show })}>
+            <i className="fas fa-bars" />
           </span>
-        </div>
-        {show && mobileMenu}
+        {mobileMenu}
       </nav>
     );
   }

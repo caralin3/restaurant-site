@@ -24,6 +24,10 @@
       justify-content: space-between;
       width: 100%;
     }
+
+    @media #{$x-large} {
+      width: 75%;
+    }
   }
 
   &_title {
@@ -52,10 +56,6 @@
 
     @media #{$medium} {
       padding: 0;
-    }
-  
-    @media #{$large} {
-      padding: 0 5rem;
     }
 
     &_title {

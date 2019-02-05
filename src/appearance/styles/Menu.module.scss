@@ -10,12 +10,20 @@
     padding: 1rem 3rem;
   }
 
+  @media #{$large} {
+    padding: 1rem 15% 2rem;
+  }
+
   &_left,
   &_right {
     @media #{$medium} {
       align-items: center;
       display: flex;
       flex-direction: column;
+      width: 45%;
+    }
+
+    @media #{$large} {
       width: 45%;
     }
   }

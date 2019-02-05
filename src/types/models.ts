@@ -19,10 +19,6 @@ export interface Hours {
   location: Location;
 }
 
-export interface ContentfulHours {
-  node: Hours;
-}
-
 export interface Food {
   name: string;
   price: number;
@@ -33,15 +29,15 @@ export interface Food {
   meal: 'lunch' | 'dinner' | 'both';
   note: string;
   shortDescription: string;
-  image: {
-    fluid: (maxWidth?: number, maxHeight?: number, resizingBehavior?: any) => any;
-  };
 }
 
 export interface MenuSection {
   title: string;
   subtitle: string;
   note: string;
+  image: {
+    fluid: (maxWidth?: number, maxHeight?: number, resizingBehavior?: any) => any;
+  };
 }
 
 export interface Special {
@@ -57,8 +53,16 @@ export interface Coupon {
   price: number;
 }
 
+export interface ContentfulHours {
+  node: Hours;
+}
+
 export interface ContentfulFood {
   node: Food;
+}
+
+export interface ContentfulMenuSection {
+  node: MenuSection;
 }
 
 export interface ContentfulProfile {
@@ -78,10 +82,6 @@ export interface Social {
   class: string;
 }
 
-export interface ContentfulIntro {
-  intro: string;
-}
-
 export interface ContentfulLongBio {
   longBio: string;
   childMarkdownRemark: {
@@ -90,11 +90,12 @@ export interface ContentfulLongBio {
 }
 
 export interface Profile {
-  intro: ContentfulIntro;
+  ourStory: string;
   longBio: ContentfulLongBio;
   heroImage: {
     fluid: (maxWidth?: number, maxHeight?: number, resizingBehavior?: any) => any;
   };
+  cateringDescription: string;
   facebook: string;
   instagram: string;
   twitter: string;

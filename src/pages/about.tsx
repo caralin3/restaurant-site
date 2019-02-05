@@ -14,13 +14,13 @@ interface AboutProps {
 export default class About extends React.Component<AboutProps> {
   public render() {
     const profile: ContentfulProfile[] = get(this, 'props.data.allContentfulProfile.edges');
-    const intro = profile[0].node.intro.intro;
+    // const intro = profile[0].node.intro.intro;
     const bio = profile[0].node.longBio.childMarkdownRemark.html;
 
     return (
       <Layout>
         <h1>About</h1>
-        <p>{intro}</p>
+        {/* <p>{intro}</p> */}
         <div dangerouslySetInnerHTML={{ __html: bio }} />
       </Layout>
     );
@@ -32,12 +32,6 @@ export const AboutQuery = graphql`
     allContentfulProfile {
       edges {
         node {
-          intro {
-            intro
-            childMarkdownRemark {
-              html
-            }
-          }
           longBio {
             childMarkdownRemark {
               html

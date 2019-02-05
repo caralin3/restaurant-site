@@ -1,99 +1,150 @@
 @import '../appearance/styles/variables.scss';
 
 .nav {
-  color: $white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-}
-
-.bar {
   align-items: center;
-  background-color: $black;
+  background-color: $primary;
   color: $white;
   display: flex;
   justify-content: space-between;
-  width: 100%;
-}
-
-.navTitle {
   padding: 0 1rem;
-
-  @media #{$medium} {
-    padding: 0 2rem;
-  }
-}
-
-.menu {
-  padding: 0 2rem;
   
   @media #{$medium} {
-    display: none;
+    flex-direction: column;
+    justify-content: center;
   }
-}
 
-.mobileMenu {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  line-height: 2;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  
-  @media #{$medium} {
-    display: none;
-  }
-}
+  &_title {
+    align-self: center;
+    flex-grow: 1;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 1rem 0;
 
-.mobileItem {
-  background-color: goldenrod;
-  width: 100%;
-
-  &:focus,
-  &:hover,
-  &:active {
-    background-color: darken(goldenrod, 10%);
-  }
-}
-
-.navMenu {
-  align-self: center;
-}
-
-.navMenu {
-  display: flex;
-  list-style: none;
-  padding: 0 1rem;
-
-  @media #{$medium} {
-    padding: 0 2rem;
-  }
-}
-
-.navItem {
-  display: none;
-  
-  @media #{$medium} {
-    align-items: center;
-    border-right: 1px solid $white;
-    display: inline-flex;
-    padding: 0 0.5rem;
-  
-    &:last-child {
-      border: none;
+    @media #{$medium} {
+      font-size: 22px;
+      padding-bottom: 0;
     }
+  }
 
+  &_button {
+    font-size: 24px;
+    font-weight: bold;
+
+    &:active,
     &:focus,
     &:hover {
-      color: goldenrod;
+      cursor: pointer;
+    }
+
+    @media #{$medium} {
+      display: none;
+    }
+  }
+
+  &_menu {
+    align-self: center;
+    display: flex;
+    list-style: none;
+    padding: 0 1rem;
+  
+    @media #{$medium} {
+      padding: 0 2rem;
+    }
+  }
+  
+  &_item {
+    display: none;
+    
+    @media #{$medium} {
+      align-items: center;
+      display: inline-flex;
+      font-size: 18px;
+      font-weight: normal;
+      margin: 0 0.5rem;
+      padding: 0.2rem 1rem;
+  
+      &:active,
+      &:focus,
+      &:hover {
+        background-color: $hover;
+      }
     }
   }
 }
 
-.nav a {
-  color: currentColor;
+.mobile {
+  background-color: $primary;
+  height: 0;
+  position: fixed;
+  left: 0;
+  overflow-x: hidden;
+  top: 0;
+  transition: 0.5s;
+  width: 100%;
+  z-index: 1;
+
+  &_open {
+    background-color: $primary;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    overflow-x: hidden;
+    top: 0;
+    transition: 0.5s;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &_content {
+    align-items: center;
+    background-color: $primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    position: relative;
+    text-align: center;
+    width: 100%;
+  }
+
+  &_item {
+    background-color: $primary;
+    color: $white;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 3;
+    width: 100%;
+  
+    &:focus,
+    &:hover,
+    &:active {
+      background-color: $hover;
+      cursor: pointer;
+    }
+  }
+
+  &_button {
+    align-self: flex-end;
+    color: $white;
+    font-size: 24px;
+    padding-right: 1rem;
+
+    &:active,
+    &:focus,
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &_footer {
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+  }
+
+  @media #{$medium} {
+    display: none;
+  }
 }

@@ -74,6 +74,6 @@ export interface FooterData extends
   ProfileData,
   SiteData {}
 
-export interface LocationHoursData extends
-  HoursData,
-  LocationData {}
+export interface MenuData extends
+  FoodData,
+  MenuSectionData {}

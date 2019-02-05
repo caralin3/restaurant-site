@@ -15,9 +15,12 @@ import {
   ValidationText
 } from './Form';
 import { Hero } from './Hero';
-import { Intro } from './Intro';
+import { Hours } from './Hours';
 import { Layout } from './Layout';
-import { LocationHours } from './LocationHours';
+import { Location } from './Location';
+import { LocationBanner } from './LocationBanner';
+import { MapContainer } from './MapContainer';
+import { MenuCategory } from './MenuCategory';
 import { Navigation } from './Navigation';
 import { Specials } from './Specials';
 
@@ -29,10 +32,13 @@ export {
   Footer,
   Form,
   Hero,
-  Intro,
+  Hours,
   Label,
   Layout,
-  LocationHours,
+  Location,
+  LocationBanner,
+  MapContainer,
+  MenuCategory,
   Navigation,
   NetlifyForm,
   NumberInput,

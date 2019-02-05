@@ -1,32 +1,21 @@
 @import './variables.scss';
 
-.contact {
+.catering {
   align-items: center;
   color: $black;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 2rem 0;
 
-  @media #{$medium} {
-    padding: 2rem;
-  }
-
-  &_top {
+  &_header {
     align-items: center;
-    color: $black;
     display: flex;
     flex-direction: column;
-
+    justify-content: space-between;
+    
     @media #{$medium} {
-      align-items: flex-start;
-      flex-direction: row-reverse;
-      justify-content: space-between;
+      flex-direction: row;
       width: 100%;
-    }
-
-    @media #{$x-large} {
-      width: 75%;
     }
   }
 
@@ -36,14 +25,39 @@
     margin: 0;
 
     @media #{$medium} {
-     align-self: flex-start; 
-     padding-left: 1rem;
+     padding-left: 3rem;
      padding-bottom: 2rem;
     }
   }
 
-  &_location {
-    padding: 2rem 1rem;
+  &_cta {
+    color: $primary;
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+    padding: 1rem 0;
+
+    &:focus,
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @media #{$medium} {
+      padding-right: 3rem;
+    }
+  }
+
+  &_copy {
+    font-size: 18px;
+    margin: 0;
+    padding: 0 3rem;
+    text-align: center;
+
+    @media #{$medium} {
+      align-self: flex-start;
+      padding-bottom: 2rem;
+      padding-left: 3rem;
+    }
   }
 
   &_form {
@@ -52,10 +66,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 2rem 0;
-
+    padding: 1rem 0;
+  
     @media #{$medium} {
       padding: 0;
+      width: 75%;
     }
 
     &_title {
@@ -66,6 +81,33 @@
         font-size: 28px;
         font-weight: bold;
         margin: 0;
+      }
+    }
+
+    &_section {
+      @media #{$medium} {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+    }
+
+    &_textarea {
+      border-radius: 5px;
+      height: 8rem;
+      font-size: 14px;
+      margin-bottom: 1rem;
+      padding: 0 0.5rem;
+      overflow: auto;
+      width: 15rem;
+
+      @media #{$medium} {
+        width: 32rem;
+      }
+    
+      @media #{$large} {
+        width: 42rem;
       }
     }
   }

@@ -1,22 +1,23 @@
 @import '../appearance/styles/variables.scss';
 
 .button {
-  background: goldenrod;
+  background: $primary;
   border: none;
   border-radius: 5px;
   color: $white;
-  font-size: 12pt;
+  font-size: 16px;
+  font-weight: bold;
   outline: none;
   padding: 0.5rem 1rem;
 
   @media #{$medium} {
-    font-size: 14pt;
+    font-size: 18px;
   }
 
   &:focus,
   &:hover,
   &:active {
-    background: darken(goldenrod, 10%);
+    background: $hover;
     cursor: pointer;
   }
 }

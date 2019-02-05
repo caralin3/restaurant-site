@@ -1,21 +1,89 @@
 import { graphql } from 'gatsby';
 import { get } from 'lodash';
 import React from 'react';
-import { Layout } from '../components';
-import { ContentfulFood, FoodData } from '../types';
 import styles from '../appearance/styles/Menu.module.scss';
+import { Layout, MenuCategory } from '../components';
+import { ContentfulFood, ContentfulMenuSection, Food, MenuData, MenuSection } from '../types';
 
 interface MenuProps {
-  data: FoodData;
+  data: MenuData;
 }
 
-export default class Menu extends React.Component<MenuProps> {
+interface MenuState {
+  food: Food[];
+  mobileSections: MenuSection[];
+  sections: MenuSection[];
+}
+
+export default class Menu extends React.Component<MenuProps, MenuState> {
+  public readonly state: MenuState = {
+    food: [],
+    mobileSections: [],
+    sections: []
+  };
+
+  public componentDidMount() {
+    this.getSections();
+  }
+
   public render() {
-    const food: ContentfulFood[] = get(this, 'props.data.allContentfulFood.edges');
-    const sections: string[] = [
+    const { mobileSections, sections } = this.state;
+
+    return (
+      <Layout pageTitle="Menu">
+        <h1 className={styles.menu_title}>Menu</h1>
+        <div className={styles.menu_mobile}>
+          {mobileSections.length > 0 && mobileSections.map((sec => (
+            <MenuCategory
+              key={sec.title}
+              section={sec}
+              items={this.getFood(sec.title)}
+            />
+          )))}
+        </div>
+        {sections.length > 0 &&
+          <div className={styles.menu}>
+            <div className={styles.menu_left}>
+              {sections.slice(0, 4).map((sec => (
+                <MenuCategory
+                  key={sec.title}
+                  section={sec}
+                  items={this.getFood(sec.title)}
+                />
+              )))}
+            </div>
+            <div className={styles.menu_right}>
+              {sections.slice(4).map((sec => (
+                <MenuCategory
+                  key={sec.title}
+                  section={sec}
+                  items={this.getFood(sec.title)}
+                />
+              )))}
+          </div>
+        </div>}
+      </Layout>
+    );
+  }
+
+  private getSections = () => {
+    const menuSections: ContentfulMenuSection[] = get(this, 'props.data.allContentfulMenuSection.edges');
+    const mobileSections: MenuSection[] = [];
+    const sections: MenuSection[] = [];
+    menuSections.forEach(section => {
+      mobileSections.push(section.node);
+      sections.push(section.node);
+    });
+    const mobileOrder: string[] = [
+      'appetizers', 'salads', 'soups',
+      'pizza', 'toppings', 'specialty pizza',
+      'entrees', 'sandwiches', 'desserts', 'drinks'
+    ];
+    const ordered: string[] = [
       'appetizers',
       'salads',
       'soups',
+      'entrees',
       'pizza',
       'toppings',
       'specialty pizza',
@@ -23,33 +91,22 @@ export default class Menu extends React.Component<MenuProps> {
       'desserts',
       'drinks'
     ];
+    mobileSections.sort((t1: MenuSection, t2: MenuSection) =>
+      mobileOrder.indexOf(t1.title.toLowerCase()) - mobileOrder.indexOf(t2.title.toLowerCase()));
+    sections.sort((t1: MenuSection, t2: MenuSection) =>
+      ordered.indexOf(t1.title.toLowerCase()) - ordered.indexOf(t2.title.toLowerCase()));
+    this.setState({ mobileSections, sections });
+  }
 
-    const section = (header: string) => (
-      food.map((edge, i) => {
-        const sectionTitle = edge.node.section.title.toLowerCase();
-        const menu = edge.node.menu;
-        if (sectionTitle === header && menu === 'general') {
-          return (
-            <div key={i}>
-              {edge.node.name}
-            </div>
-          );
-        }
-      })
-    );
-
-    return (
-      <Layout pageTitle="Menu">
-        <div className={styles.menu}>
-          {sections.map((sec => (
-            <div className={styles.section} key={sec} style={{gridArea: sec.replace(/\s/g, '')}}>
-              <p className={styles.section_header}>{sec}</p>
-              {section(sec)}
-            </div>
-          )))}
-        </div>
-      </Layout>
-    );
+  private getFood = (section: string) => {
+    const foodData: ContentfulFood[] = get(this, 'props.data.allContentfulFood.edges');
+    const food: Food[] = [];
+    foodData.forEach(edge => {
+      if (edge.node.section.title === section) {
+        food.push(edge.node);
+      }
+    });
+    return food;
   }
 }
 
@@ -61,11 +118,26 @@ export const MenuQuery = graphql`
           name
           section {
             title
+            note
           }
           meal
           menu
           price
+          priceSmall
           shortDescription
+        }
+      }
+    }
+    allContentfulMenuSection {
+      edges {
+        node {
+          title
+          note
+          image {
+            fluid(maxWidth: 350, maxHeight: 196, resizingBehavior: SCALE) {
+              ...GatsbyContentfulFluid
+            }
+          }
         }
       }
     }

@@ -1,0 +1,70 @@
+@import '../appearance/styles/variables.scss';
+
+.field {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.label {
+  font-size: 16px;
+  font-weight: bold;
+
+  &_asterix {
+    color: $primary;
+    padding-left: 3px;
+  }
+
+  &_small {
+    font-weight: normal;
+  }
+}
+
+.input,
+.numberInput {
+  border-radius: 5px;
+  font-size: 14px;
+  height: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  width: 15rem;
+  
+  @media #{$medium} {
+    margin: 0 0.5rem 0.5rem;
+  }
+
+  @media #{$large} {
+    width: 20rem;
+  }
+}
+
+.numberInput {
+  @media #{$medium} {
+    margin-right: 0.5rem;
+    width: 9.5rem;
+  }
+
+  @media #{$large} {
+    width: 12.5rem;
+  }
+}
+
+.textarea {
+  border-radius: 5px;
+  height: 8rem;
+  font-size: 14px;
+  margin-bottom: 1rem;
+  padding: 0 0.5rem;
+  overflow: auto;
+  width: 15rem;
+
+  @media #{$large} {
+    width: 20rem;
+  }
+}
+
+.validation {
+  color: $primary;
+  margin: 0;
+  padding: 0;
+}

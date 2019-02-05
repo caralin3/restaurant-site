@@ -1,0 +1,123 @@
+@import '../appearance/styles/variables.scss';
+
+.menuSection {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 0 0;
+  width: 100%;
+
+  @media screen and (min-width: 550px) {
+    width: 75%;  
+  }
+
+  @media #{$medium} {
+    width: 100%;
+  }
+
+  &_toppings {
+    text-align: center;
+    width: 100%;
+
+    @media screen and (min-width: 550px) {
+      width: 75%;  
+    }
+
+    @media #{$medium} {
+      width: 80%;
+    }
+  }
+
+  &_title {
+    color: $primary;
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 1rem;
+  }
+
+  &_sizes {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+
+    &_small,
+    &_large {
+      font-size: 16px;
+      line-height: 2.5;
+      margin: 0;
+      text-align: right;
+    }
+
+    &_small {
+      width: 50%;
+
+      @media screen and (min-width: 405px) {
+        width: 66%;
+      }
+    }
+
+    &_large {
+      width: 25%;
+
+      @media screen and (min-width: 405px) {
+        width: 33%;
+      }
+    }
+  }
+
+  &_note {
+    font-weight: bold;
+  }
+
+  &_image {
+    width: 100%;
+
+    @media #{$medium} {
+      margin: 0 auto;
+      width: 75%;
+    }
+  }
+}
+
+.menuItem {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  width: 100%;
+
+  &_name {
+    flex-grow: 1;
+    font-size: 16px;
+  }
+
+  &_price {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: right;
+    width: 25%;
+
+    @media screen and (min-width: 405px) {
+      width: 33%;
+    }
+  }
+
+  &_description {
+    font-size: 12px;
+    margin: 0;
+    padding: 0.3rem 0 0;
+  }
+
+  &_toppings {
+    &::after {
+      content: ", ";
+    }
+
+    &:last-of-type::after {
+      content: "";
+    }
+  }
+}

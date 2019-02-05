@@ -5,7 +5,7 @@ import styles from '../appearance/styles/Menu.module.scss';
 import { Layout, MenuCategory } from '../components';
 import { ContentfulFood, ContentfulMenuSection, Food, MenuData, MenuSection } from '../types';
 
-interface MenuProps {
+interface CateringMenuProps {
   data: MenuData;
 }
 
@@ -15,7 +15,7 @@ interface MenuState {
   sections: MenuSection[];
 }
 
-export default class Menu extends React.Component<MenuProps, MenuState> {
+export default class CateringMenu extends React.Component<CateringMenuProps, MenuState> {
   public readonly state: MenuState = {
     food: [],
     mobileSections: [],
@@ -30,8 +30,8 @@ export default class Menu extends React.Component<MenuProps, MenuState> {
     const { mobileSections, sections } = this.state;
 
     return (
-      <Layout pageTitle="Menu">
-        <h1 className={styles.menu_title}>Menu</h1>
+      <Layout pageTitle="Catering Menu">
+        <h1 className={styles.menu_title}>Catering Menu</h1>
         <div className={styles.menu_mobile}>
           {mobileSections.length > 0 && mobileSections.map((sec => (
             <MenuCategory
@@ -102,7 +102,7 @@ export default class Menu extends React.Component<MenuProps, MenuState> {
     const foodData: ContentfulFood[] = get(this, 'props.data.allContentfulFood.edges');
     const food: Food[] = [];
     foodData.forEach(edge => {
-      if (edge.node.section.title === section && edge.node.menu === 'general') {
+      if (edge.node.section.title === section && edge.node.menu === 'catering') {
         food.push(edge.node);
       }
     });
@@ -110,7 +110,7 @@ export default class Menu extends React.Component<MenuProps, MenuState> {
   }
 }
 
-export const MenuQuery = graphql`
+export const CateringMenuQuery = graphql`
   query {
     allContentfulFood {
       edges {

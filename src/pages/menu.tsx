@@ -1,9 +1,9 @@
 import { graphql } from 'gatsby';
 import { get } from 'lodash';
 import React from 'react';
+import styles from '../appearance/styles/Menu.module.scss';
 import { Layout, MenuCategory } from '../components';
 import { ContentfulFood, ContentfulMenuSection, Food, MenuData, MenuSection } from '../types';
-import styles from '../appearance/styles/Menu.module.scss';
 
 interface MenuProps {
   data: MenuData;

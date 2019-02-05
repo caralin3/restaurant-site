@@ -93,16 +93,16 @@ export default class Catering extends React.Component<CateringProps, CateringSta
         phone: formatPhone(phone),
         time: formatTime(time),
       };
-      // fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      //   body: encode({ 'form-name': 'catering', ...data })
-      // })
-      //   .then(() => this.setState({ submitted: true }))
-      //   .catch(error => {
-      //     console.error(error);
-      //     this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
-      //   });
+      fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'catering', ...data })
+      })
+        .then(() => this.setState({ submitted: true }))
+        .catch(error => {
+          console.error(error);
+          this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
+        });
       this.setState({ submitted: true });
     } else {
       this.setState({

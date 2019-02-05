@@ -50,16 +50,16 @@ export default class Contact extends React.Component<ContactProps, ContactState>
         name,
         message,
       };
-      // fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      //   body: encode({ 'form-name': 'contact', ...data })
-      // })
-      //   .then(() => this.setState({ submitted: true }))
-      //   .catch(error => {
-      //     console.error(error);
-      //     this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
-      //   });
+      fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: encode({ 'form-name': 'contact', ...data })
+      })
+        .then(() => this.setState({ submitted: true }))
+        .catch(error => {
+          console.error(error);
+          this.setState({ error: 'Submission failed. Please try again in a few minutes.' });
+        });
       this.setState({ submitted: true });
 
     } else {

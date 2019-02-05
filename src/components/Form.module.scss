@@ -22,6 +22,7 @@
 
 .input,
 .numberInput {
+  background-color: $white;
   border-radius: 5px;
   font-size: 14px;
   height: 1.5rem;
@@ -50,6 +51,7 @@
 }
 
 .textarea {
+  background-color: $white;
   border-radius: 5px;
   height: 8rem;
   font-size: 14px;

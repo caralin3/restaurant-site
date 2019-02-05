@@ -36,9 +36,9 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
     const navMenu = (
       <ul className={styles.nav_menu}>
         {routes.map((route, i) => (
-          <li className={styles.nav_item} key={i}>
-            <Link to={route.path}>{route.label}</Link>
-          </li>
+          <Link to={route.path} className={styles.nav_item} key={i}>
+            {route.label}
+          </Link>
         ))}
       </ul>
     );
@@ -50,9 +50,9 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
             <i className="fas fa-times" />
           </span>
           {routes.map((route, i) => (
-            <li className={styles.mobile_item} key={i}>
-              <Link to={route.path}>{route.label}</Link>
-            </li>
+            <Link to={route.path} className={styles.mobile_item} key={i}>
+              {route.label}
+            </Link>
           ))}
         </ul>
         <div className={styles.mobile_footer}>

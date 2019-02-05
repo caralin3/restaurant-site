@@ -5,7 +5,12 @@
   color: $black;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 2rem 0;
+
+  @media #{$medium} {
+    padding: 2rem;
+  }
 
   &_top {
     align-items: center;
@@ -17,11 +22,7 @@
       align-items: flex-start;
       flex-direction: row-reverse;
       justify-content: space-between;
-      width: 80%;
-    }
-
-    @media #{$large} {
-      width: 65%;
+      width: 100%;
     }
   }
 
@@ -32,13 +33,13 @@
 
     @media #{$medium} {
      align-self: flex-start; 
-     padding-left: 3rem;
+     padding-left: 1rem;
      padding-bottom: 2rem;
     }
   }
 
   &_location {
-    padding: 2rem 0;
+    padding: 2rem 1rem;
   }
 
   &_form {
@@ -48,9 +49,13 @@
     flex-direction: column;
     justify-content: center;
     padding: 2rem 0;
-  
+
     @media #{$medium} {
       padding: 0;
+    }
+  
+    @media #{$large} {
+      padding: 0 5rem;
     }
 
     &_title {

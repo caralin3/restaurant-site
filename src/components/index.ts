@@ -16,7 +16,6 @@ import {
 } from './Form';
 import { Hero } from './Hero';
 import { Hours } from './Hours';
-import { Intro } from './Intro';
 import { Layout } from './Layout';
 import { Location } from './Location';
 import { MenuCategory } from './MenuCategory';
@@ -32,7 +31,6 @@ export {
   Form,
   Hero,
   Hours,
-  Intro,
   Label,
   Layout,
   Location,

@@ -9,21 +9,12 @@
     font-weight: bold;
     margin: 0;
     padding-bottom: 1rem;
-
-    @media #{$medium} {
-      font-size: 28px;
-    }
   }
 
   &_details {
     font-size: 18px;
     line-height: 1.5;
     margin: 0;
-    width: 265px;
-
-    @media #{$medium} {
-      width: 335px;
-    }
   }
 
   &_link {

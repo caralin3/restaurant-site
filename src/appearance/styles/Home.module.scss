@@ -1,14 +1,26 @@
 @import './variables.scss';
 @import '../../components/Button.module.scss';
 
+.container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
 .info {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
   padding: 2rem 1rem;
 
+  @media #{$medium} {
+    // display: block;
+    max-width: 40rem;
+  }
+  
   @media #{$ie} {
     margin-bottom: 2rem;
+    width: 95%;
   }
 
   @media #{$medium} {
@@ -45,9 +57,12 @@
 .hours {
   background-color: $primary;
   color: $white;
-  padding: 2rem 1rem;
-
+  padding: 2rem 0;
+  width: 100%;
+  
   @media #{$medium} {
+    display: flex;
+    justify-content: center;
     padding: 3rem;
   }
 }

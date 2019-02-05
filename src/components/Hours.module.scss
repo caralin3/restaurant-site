@@ -3,17 +3,18 @@
 .hours {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  padding: 0 1rem;
+
+  @media #{$small} {
+    max-width: 40rem;
+    width: 100%;
+  }
 
   &_title {
     font-size: 24px;
     font-weight: bold;
     margin: 0;
     padding-bottom: 1rem;
-
-    @media #{$medium} {
-      font-size: 28px;
-    }
   }
 
   &_item {
@@ -21,9 +22,10 @@
     display: flex;
     font-size: 14px;
     justify-content: space-between;
-
-    @media #{$medium} {
+    
+    @media #{$small} {
       font-size: 18px;
+      justify-content: flex-start;
     }
   }
 
@@ -31,6 +33,14 @@
     font-weight: bold;
     margin: 0;
     padding-right: 1rem;
+
+    @media #{$small} {
+      width: 11rem;
+    }
+
+    @media #{$medium} {
+      width: 12rem;
+    }
   }
 
   &_details {

@@ -1,4 +1,3 @@
-
 import { graphql } from 'gatsby';
 import { get } from 'lodash';
 import React from 'react';

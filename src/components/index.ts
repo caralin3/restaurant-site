@@ -19,6 +19,7 @@ import { Hours } from './Hours';
 import { Layout } from './Layout';
 import { Location } from './Location';
 import { LocationBanner } from './LocationBanner';
+import { MapContainer } from './MapContainer';
 import { MenuCategory } from './MenuCategory';
 import { Navigation } from './Navigation';
 import { Specials } from './Specials';
@@ -36,6 +37,7 @@ export {
   Layout,
   Location,
   LocationBanner,
+  MapContainer,
   MenuCategory,
   Navigation,
   NetlifyForm,

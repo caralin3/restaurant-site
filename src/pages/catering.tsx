@@ -127,7 +127,7 @@ export default class Catering extends React.Component<CateringProps, CateringSta
         <div className={styles.catering}>
           <div className={styles.catering_header}>
             <h2 className={styles.catering_title}>Catering Inquiry</h2>
-            <a className={styles.catering_cta}>View Catering Menu</a>
+            <a className={styles.catering_cta} href="/cateringMenu">View Catering Menu</a>
           </div>
           <p className={styles.catering_copy}>
             Please fill out this form if you are interested in our catering services.

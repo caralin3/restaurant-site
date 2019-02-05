@@ -20,6 +20,7 @@ const routes: NavRoute[] = [
   {path: '/about/', label: 'About'},
   {path: '/menu/', label: 'Menu'},
   {path: '/catering/', label: 'Catering'},
+  {path: '/cateringMenu/', label: 'Catering Menu'},
   // {path: '/order/', label: 'Order Online'},
   {path: '/contact/', label: 'Contact'},
 ];

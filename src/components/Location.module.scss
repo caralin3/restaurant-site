@@ -26,4 +26,9 @@
       color: $primary;
     }
   }
+
+  &_map {
+    padding: 2rem 0 20rem;
+    z-index: -1;
+  }
 }

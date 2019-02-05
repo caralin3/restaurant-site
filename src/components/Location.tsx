@@ -3,6 +3,7 @@ import React from 'react';
 import { formatPhone } from '../utils';
 import { LocationData } from '../types';
 import styles from './Location.module.scss';
+import { MapContainer } from './';
 
 interface LocationProps {}
 
@@ -15,6 +16,7 @@ export const LocationComponent: React.SFC<LocationPropsWithData> = ({data}) => {
   const { city, phone, state, street, zipCode } = location;
   const address = `${street} ${city}, ${state}`;
   const mapsLink = `http://maps.google.com/?q=${address}`;
+  const coordinates = { lat: 37.778519, lng: -122.405640 };
 
   return (
     <div className={styles.location}>
@@ -25,6 +27,9 @@ export const LocationComponent: React.SFC<LocationPropsWithData> = ({data}) => {
       <a className={styles.location_link} href={mapsLink} target="_blank">
         Get Directions
       </a>
+      <div className={styles.location_map}>
+        <MapContainer location={coordinates} />
+      </div>
     </div>
   );
 };

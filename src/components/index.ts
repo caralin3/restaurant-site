@@ -18,6 +18,7 @@ import { Hero } from './Hero';
 import { Hours } from './Hours';
 import { Layout } from './Layout';
 import { Location } from './Location';
+import { LocationBanner } from './LocationBanner';
 import { MenuCategory } from './MenuCategory';
 import { Navigation } from './Navigation';
 import { Specials } from './Specials';
@@ -34,6 +35,7 @@ export {
   Label,
   Layout,
   Location,
+  LocationBanner,
   MenuCategory,
   Navigation,
   NetlifyForm,

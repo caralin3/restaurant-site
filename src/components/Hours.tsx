@@ -22,7 +22,6 @@ export class HoursComponent extends React.Component<HoursPropsWithData, HoursSta
   public componentDidMount() {
     const { data } = this.props;
     const hours: ContentfulHours[] = sortDays(data.allContentfulHours.edges);
-    console.log(hours);
     this.setState({ hours });
   }
 
@@ -32,7 +31,7 @@ export class HoursComponent extends React.Component<HoursPropsWithData, HoursSta
     return (
       <div className={styles.hours}>
         <p className={styles.hours_title}>Hours</p>
-        {!!hours && hours.slice(3).map((edge, i) => (
+        {!!hours && hours.map((edge, i) => (
           <span className={styles.hours_item} key={i}>
             <p className={styles.hours_label}>
               {edge.node.daysOfTheWeek}

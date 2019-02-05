@@ -29,15 +29,15 @@ export interface Food {
   meal: 'lunch' | 'dinner' | 'both';
   note: string;
   shortDescription: string;
-  image: {
-    fluid: (maxWidth?: number, maxHeight?: number, resizingBehavior?: any) => any;
-  };
 }
 
 export interface MenuSection {
   title: string;
   subtitle: string;
   note: string;
+  image: {
+    fluid: (maxWidth?: number, maxHeight?: number, resizingBehavior?: any) => any;
+  };
 }
 
 export interface Special {

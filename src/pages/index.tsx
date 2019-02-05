@@ -2,7 +2,7 @@
 import { graphql } from 'gatsby';
 import { get } from 'lodash';
 import React from 'react';
-import { Hero, Hours, Layout } from '../components';
+import { Hero, Hours, Layout, LocationBanner } from '../components';
 import styles from '../appearance/styles/Home.module.scss';
 import '../appearance/styles/Index.module.scss';
 
@@ -16,6 +16,7 @@ export default class Index extends React.Component<IndexProps> {
     return (
       <Layout>
         <Hero />
+        <LocationBanner />
         <div className={styles.container}>
           <div className={styles.info}>
             <h3 className={styles.info_title}>Our Story</h3>

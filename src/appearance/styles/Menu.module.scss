@@ -1,46 +1,40 @@
 @import './variables.scss';
 
 .menu {
-  align-items: center;
-  color: $black;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-height: 100vh;
-  padding-bottom: 1rem;
+  display: none;
 
   @media #{$medium} {
-    flex-wrap: wrap;
-    flex-direction: row;
+    align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 3rem;
   }
-  
-  @supports (display: grid) {
+
+  &_left,
+  &_right {
     @media #{$medium} {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      grid-template:
-      "appetizers pizza specialtypizza"
-      "salads toppings sandwiches"
-      "soups desserts drinks";
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      width: 45%;
     }
   }
-}
 
-.section {
-  text-align: center;
-
-  @media #{$medium} {
-    height: 33%;
-    width: 33%;
+  &_title {
+    margin: 0;
+    padding-top: 1rem;
+    text-align: center;
   }
 
-  @supports (display: grid) {
-    height: auto;
-    width: auto;
-  }
+  &_mobile {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
 
-  &_header {
-    font-weight: bold;
-    text-transform: capitalize;
+    @media #{$medium} {
+      display: none;   
+    }
   }
 }

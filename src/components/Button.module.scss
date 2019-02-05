@@ -17,7 +17,7 @@
   &:focus,
   &:hover,
   &:active {
-    background: darken($primary, 10%);
+    background: $hover;
     cursor: pointer;
   }
 }

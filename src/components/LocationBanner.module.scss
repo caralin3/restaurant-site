@@ -1,0 +1,48 @@
+@import '../appearance/styles/variables.scss';
+
+.banner {
+  align-items: center;
+  background-color: $background;
+  color: $white;
+  display: flex;
+  font-size: 16px;
+  font-weight: bold;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+
+  @media #{$x-small} {
+    font-size: 14px;
+  }
+  
+  @media #{$medium} {
+    font-size: 18px;
+    padding: 0 2rem;
+  }
+
+  &_links {
+    display: flex;
+  }
+  
+  &_link {
+    align-items: center;
+    display: flex;
+  }
+
+  &_dot {
+    font-size: 5px;
+    padding: 0 0.5rem;
+
+    @media #{$medium} {
+      padding: 0 1rem;
+    }
+  }
+
+  &_deliver {
+    text-align: center;
+    width: 4rem;
+
+    @media #{$medium} {
+      width: auto;
+    }
+  }
+}

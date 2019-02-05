@@ -17,11 +17,11 @@ interface NavRoute {
 }
 
 const routes: NavRoute[] = [
-  {path: '/about', label: 'About'},
-  {path: '/menu', label: 'Menu'},
-  {path: '/catering', label: 'Catering'},
-  // {path: '/order', label: 'Order Online'},
-  {path: '/contact', label: 'Contact'},
+  {path: '/about/', label: 'About'},
+  {path: '/menu/', label: 'Menu'},
+  {path: '/catering/', label: 'Catering'},
+  // {path: '/order/', label: 'Order Online'},
+  {path: '/contact/', label: 'Contact'},
 ];
 
 export class Navigation extends React.Component<NavigationProps, NavigationState> {
@@ -36,7 +36,14 @@ export class Navigation extends React.Component<NavigationProps, NavigationState
     const navMenu = (
       <ul className={styles.nav_menu}>
         {routes.map((route, i) => (
-          <Link to={route.path} className={styles.nav_item} key={i}>
+          <Link
+            key={i}
+            className={styles.nav_item}
+            activeStyle={{
+              backgroundColor: '#9d0214'
+            }}
+            to={route.path}
+          >
             {route.label}
           </Link>
         ))}

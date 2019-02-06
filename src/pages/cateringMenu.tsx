@@ -32,6 +32,7 @@ export default class CateringMenu extends React.Component<CateringMenuProps, Men
     return (
       <Layout pageTitle="Catering Menu">
         <h1 className={styles.menu_title}>Catering Menu</h1>
+        <p className={styles.menu_copy}>Sizes are for Half and Full Trays</p>
         <div className={styles.menu_mobile}>
           {mobileSections.length > 0 && mobileSections.map((sec => (
             <MenuCategory
@@ -44,7 +45,7 @@ export default class CateringMenu extends React.Component<CateringMenuProps, Men
         {sections.length > 0 &&
           <div className={styles.menu}>
             <div className={styles.menu_left}>
-              {sections.slice(0, 4).map((sec => (
+              {sections.slice(0, 2).map((sec => (
                 <MenuCategory
                   key={sec.title}
                   section={sec}
@@ -53,7 +54,7 @@ export default class CateringMenu extends React.Component<CateringMenuProps, Men
               )))}
             </div>
             <div className={styles.menu_right}>
-              {sections.slice(4).map((sec => (
+              {sections.slice(2).map((sec => (
                 <MenuCategory
                   key={sec.title}
                   section={sec}
@@ -62,6 +63,7 @@ export default class CateringMenu extends React.Component<CateringMenuProps, Men
               )))}
           </div>
         </div>}
+        <p className={styles.menu_footer}>*Heroes are also available at 5 ft</p>
       </Layout>
     );
   }
@@ -71,25 +73,26 @@ export default class CateringMenu extends React.Component<CateringMenuProps, Men
     const mobileSections: MenuSection[] = [];
     const sections: MenuSection[] = [];
     menuSections.forEach(section => {
-      mobileSections.push(section.node);
-      sections.push(section.node);
+      const title = section.node.title.toLowerCase();
+      if (title !== 'salads' && title !== 'soups' && title !== 'sandwiches' && 
+        title !== 'desserts' && title !== 'drinks') {
+          mobileSections.push(section.node);
+          sections.push(section.node);
+      }
     });
     const mobileOrder: string[] = [
-      'appetizers', 'salads', 'soups',
-      'pizza', 'toppings', 'specialty pizza',
-      'entrees', 'sandwiches', 'desserts', 'drinks'
+      'appetizers',
+      'entrees',
+      'pizza',
+      'toppings',
+      'specialty pizza'
     ];
     const ordered: string[] = [
       'appetizers',
-      'salads',
-      'soups',
       'entrees',
       'pizza',
       'toppings',
       'specialty pizza',
-      'sandwiches',
-      'desserts',
-      'drinks'
     ];
     mobileSections.sort((t1: MenuSection, t2: MenuSection) =>
       mobileOrder.indexOf(t1.title.toLowerCase()) - mobileOrder.indexOf(t2.title.toLowerCase()));

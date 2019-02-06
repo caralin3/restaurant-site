@@ -16,7 +16,7 @@ export const LocationComponent: React.SFC<LocationPropsWithData> = ({data}) => {
   const { city, phone, state, street, zipCode } = location;
   const address = `${street} ${city}, ${state}`;
   const mapsLink = `http://maps.google.com/?q=${address}`;
-  const coordinates = { lat: 37.778519, lng: -122.405640 };
+  const coordinates = { lat: 41.0907, lng: 73.9179 };
 
   return (
     <div className={styles.location}>

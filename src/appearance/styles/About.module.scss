@@ -1,0 +1,21 @@
+@import './variables.scss';
+@import '../../components/Button.module.scss';
+
+.about {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem 2rem;
+
+  @media #{$medium} {
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 1rem 10%;
+  }
+
+  &_title {
+    @media #{$medium} {
+      text-align: left;
+    }
+  }
+}

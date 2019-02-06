@@ -34,6 +34,25 @@
     text-align: center;
   }
 
+  &_copy {
+    font-size: 18px;
+    margin: 0;
+    padding-top: 0.5rem;
+    text-align: center;
+
+    @media #{$medium} {
+      padding-top: 1rem;
+    }
+  }
+
+  &_footer {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
   &_mobile {
     align-items: center;
     display: flex;

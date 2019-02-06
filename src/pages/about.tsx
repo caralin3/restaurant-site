@@ -4,7 +4,7 @@ import { Layout } from '../components';
 import { graphql } from 'gatsby';
 import { get } from 'lodash';
 import { ContentfulProfile, ProfileData } from '../types';
-// import styles from '../appearance/styles/Home.module.scss';
+import styles from '../appearance/styles/About.module.scss';
 import '../appearance/styles/Index.module.scss';
 
 interface AboutProps {
@@ -14,14 +14,14 @@ interface AboutProps {
 export default class About extends React.Component<AboutProps> {
   public render() {
     const profile: ContentfulProfile[] = get(this, 'props.data.allContentfulProfile.edges');
-    // const intro = profile[0].node.intro.intro;
     const bio = profile[0].node.longBio.childMarkdownRemark.html;
 
     return (
       <Layout>
-        <h1>About</h1>
-        {/* <p>{intro}</p> */}
-        <div dangerouslySetInnerHTML={{ __html: bio }} />
+        <div className={styles.about}>
+          <h1 className={styles.about_header}>About</h1>
+          <div dangerouslySetInnerHTML={{ __html: bio }} />
+        </div>
       </Layout>
     );
   }

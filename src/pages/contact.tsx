@@ -50,7 +50,7 @@ export default class Contact extends React.Component<ContactProps, ContactState>
         name,
         message,
       };
-      fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
+      fetch('https://joespizzeria-demo.netlify.com/contact/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({ 'form-name': 'contact', ...data })

@@ -93,7 +93,7 @@ export default class Catering extends React.Component<CateringProps, CateringSta
         phone: formatPhone(phone),
         time: formatTime(time),
       };
-      fetch('https://restaurant-site.netlify.com/contact/?no-cache=1', {
+      fetch('https://joespizzeria-demo.netlify.com/contact/?no-cache=1', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: encode({ 'form-name': 'catering', ...data })

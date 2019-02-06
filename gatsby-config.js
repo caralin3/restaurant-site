@@ -47,6 +47,26 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-tagmanager`,
+      options: {
+        id: process.env.GOOGLE_TAG_MANAGER_ID,
+  
+        // Include GTM in development.
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+  
+        // Specify optional GTM environment details.
+        gtmAuth: process.env.GOOGLE_TAG_MANAGER_ENV_AUTH,
+        gtmPreview: process.env.GOOGLE_TAG_MANAGER_ENV_PREVIEW,
+      },
     }
   ],
 }
